@@ -1,0 +1,1 @@
+This is the initial commit file for the assignment of DCA Autumn 2026 Group 2.
