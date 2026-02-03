@@ -1,1 +1,1 @@
-This is the initial commit file for the assignment of DCA Autumn 2026 Group 2.
+This is the initial commit file for the assignment of DCA Spring 2026 Group 2.
