@@ -3,3 +3,15 @@
 ################################################################################
 
 /.vs
+
+# Ignore build output folders in all subdirectories
+**/bin/
+**/obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# VS Code
+.vscode/
