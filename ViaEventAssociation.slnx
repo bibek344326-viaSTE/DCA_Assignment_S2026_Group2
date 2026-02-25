@@ -6,8 +6,13 @@
     <File Path="../../../../Desktop/VeaEventConcreteDomainModel_updated.drawio (1).png" />
     <File Path="../../../../Downloads/VEA_Abstract Domain Model.svg" />
   </Folder>
+  <Folder Name="/Documentation/Assignment 4/">
+    <File Path="Documentation/Assignment 1/FeatureStatus.md" />
+  </Folder>
   <Folder Name="/src/" />
-  <Folder Name="/src/Core/" />
+  <Folder Name="/src/Core/">
+    <Project Path="src/Core/ViaEventAssociation.Core.Domain/ViaEventAssociation.Core.Domain.csproj" />
+  </Folder>
   <Folder Name="/src/Core/Tools/">
     <Project Path="src/ViaEventAssociation.Core.Tools.OperationResult/ViaEventAssociation.Core.Tools.OperationResult.csproj" Id="216a8838-b85b-4ee4-8af1-512788a20fe8" />
   </Folder>
