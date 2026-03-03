@@ -3,20 +3,20 @@
     <File Path="GroupMembers.md" />
   </Folder>
   <Folder Name="/Documentation/Assignment 1/">
-    <File Path="../../../../Desktop/VeaEventConcreteDomainModel_updated.drawio (1).png" />
     <File Path="../../../../Downloads/VEA_Abstract Domain Model.svg" />
   </Folder>
-  <Folder Name="/Documentation/Assignment 4/">
-    <File Path="Documentation/Assignment 1/FeatureStatus.md" />
+  <Folder Name="/Documentation/Assignment 2/">
+    <File Path="../../../../Desktop/VeaEventConcreteDomainModel_updated.drawio (1).png" />
   </Folder>
+  <Folder Name="/Documentation/Assignment4/" />
   <Folder Name="/src/" />
   <Folder Name="/src/Core/">
     <Project Path="src/Core/ViaEventAssociation.Core.Domain/ViaEventAssociation.Core.Domain.csproj" />
   </Folder>
   <Folder Name="/src/Core/Tools/">
-    <Project Path="src/ViaEventAssociation.Core.Tools.OperationResult/ViaEventAssociation.Core.Tools.OperationResult.csproj" Id="216a8838-b85b-4ee4-8af1-512788a20fe8" />
+    <Project Path="src/ViaEventAssociation.Core.Tools.OperationResult/ViaEventAssociation.Core.Tools.OperationResult.csproj"/>
   </Folder>
   <Folder Name="/Tests/">
-    <Project Path="Tests/UnitTests/UnitTests.csproj" Id="6d01e7cc-91cb-4181-97f3-35973782c7e8" />
+    <Project Path="Tests/UnitTests/UnitTests.csproj"/>
   </Folder>
 </Solution>

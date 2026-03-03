@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f73561e1-897e-469c-9917-7c034db761a2" name="Changes" comment="" />
+    <list default="true" id="f73561e1-897e-469c-9917-7c034db761a2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/.idea.ViaEventAssociation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/.idea.ViaEventAssociation/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_C:/Users/shankar/OneDrive - ViaUC/Desktop/SEMESTER6/DCA1/Assignment/DCA_Assignment_S2026_Group2/Documentation" value="3A1jvZBpH4iDJgfvbHfI3zxsdfZ" />
+    </persistenceIdMap>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -14,9 +21,9 @@
     <commands />
     <urls />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="3A1jvZBpH4iDJgfvbHfI3zxsdfZ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -29,7 +36,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "SK__Assignment4",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -41,6 +48,7 @@
       <option name="presentableId" value="Default" />
       <updated>1771767201997</updated>
       <workItem from="1771767203277" duration="93000" />
+      <workItem from="1772301109405" duration="47000" />
     </task>
     <servers />
   </component>
@@ -68,5 +76,13 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
   </component>
 </project>

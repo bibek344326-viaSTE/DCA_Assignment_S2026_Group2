@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Core\ViaEventAssociation.Core.Domain\ViaEventAssociation.Core.Domain.csproj" />
     <ProjectReference Include="..\..\src\ViaEventAssociation.Core.Tools.OperationResult\ViaEventAssociation.Core.Tools.OperationResult.csproj" />
   </ItemGroup>
 
