@@ -8,15 +8,17 @@
   <Folder Name="/Documentation/Assignment 2/">
     <File Path="../../../../Desktop/VeaEventConcreteDomainModel_updated.drawio (1).png" />
   </Folder>
-  <Folder Name="/Documentation/Assignment4/" />
+  <Folder Name="/Documentation/Assignment4/">
+    <File Path="Resources.md" />
+  </Folder>
   <Folder Name="/src/" />
   <Folder Name="/src/Core/">
     <Project Path="src/Core/ViaEventAssociation.Core.Domain/ViaEventAssociation.Core.Domain.csproj" />
   </Folder>
   <Folder Name="/src/Core/Tools/">
-    <Project Path="src/ViaEventAssociation.Core.Tools.OperationResult/ViaEventAssociation.Core.Tools.OperationResult.csproj"/>
+    <Project Path="src/ViaEventAssociation.Core.Tools.OperationResult/ViaEventAssociation.Core.Tools.OperationResult.csproj" />
   </Folder>
   <Folder Name="/Tests/">
-    <Project Path="Tests/UnitTests/UnitTests.csproj"/>
+    <Project Path="Tests/UnitTests/UnitTests.csproj" />
   </Folder>
 </Solution>
