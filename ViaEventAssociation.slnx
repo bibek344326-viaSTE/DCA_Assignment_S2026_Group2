@@ -8,9 +8,6 @@
   <Folder Name="/Documentation/Assignment 2/">
     <File Path="../../../../Desktop/VeaEventConcreteDomainModel_updated.drawio (1).png" />
   </Folder>
-  <Folder Name="/Documentation/Assignment4/">
-    <File Path="Resources.md" />
-  </Folder>
   <Folder Name="/src/" />
   <Folder Name="/src/Core/">
     <Project Path="src/Core/ViaEventAssociation.Core.Domain/ViaEventAssociation.Core.Domain.csproj" />
