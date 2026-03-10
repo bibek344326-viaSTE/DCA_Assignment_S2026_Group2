@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fadcf82f-6d93-439f-9a7c-a7f8db6b7028" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/UpdateDescription/UpdateDescriptionTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ViaEventAssociation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ViaEventAssociation/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/CreateEvent/CreateEventTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/CreateEvent/CreateEventTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/UpdateDescription/UpdateDescriptionTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/UpdateDescription/UpdateDescriptionTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/UpdateTitle/UpdateTitleOfEventTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/UpdateTitle/UpdateTitleOfEventTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventDescription.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/UnitTests/OperationalResult/ResultTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/UnitTests/OperationalResult/ResultTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventRoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventRoot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventTitle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/ViaEventAssociation.Core.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/ViaEventAssociation.Core.Domain.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ViaEventAssociation.Core.Tools.OperationResult/Result.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViaEventAssociation.Core.Tools.OperationResult/Result.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ViaEventAssociation.Core.Tools.OperationResult/ResultError.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViaEventAssociation.Core.Tools.OperationResult/Error.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +24,12 @@
     <persistenceIdMap>
       <entry key="_C:/Users/shankar/OneDrive - ViaUC/Desktop/SEMESTER6/DCA1/Assignment/DCA_Assignment_S2026_Group2" value="3A1gmwNvrBn7muWZd4fEnFQe9Mg" />
     </persistenceIdMap>
+  </component>
+  <component name="CopilotUserSelectedModel">
+    <selectedModels>
+      <entry key="chat-panel" value="Claude Opus 4.6" />
+      <entry key="agent-panel" value="Claude Opus 4.6" />
+    </selectedModels>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -50,6 +58,9 @@
     <urls />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Toolset" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -111,7 +122,9 @@
       <workItem from="1772906332814" duration="370000" />
       <workItem from="1772959633340" duration="12960000" />
       <workItem from="1773119352934" duration="1021000" />
-      <workItem from="1773120775481" duration="5143000" />
+      <workItem from="1773120775481" duration="5168000" />
+      <workItem from="1773127454709" duration="11164000" />
+      <workItem from="1773163429177" duration="739000" />
     </task>
     <servers />
   </component>
