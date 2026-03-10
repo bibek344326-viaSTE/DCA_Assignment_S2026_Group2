@@ -9,16 +9,15 @@ public class EventRoot : AggregateRoot<EventId>
     internal EventDescription eventDescription { get; private set; }
     internal DateTime eventStartDateTime { get; private set; }
     internal DateTime eventEndDateTime { get; private set; }
-    internal EventVisibility Visibility { get; private set; }
+    internal bool isPublic { get; private set; }
     internal int maxGuests { get; private set; }
     internal EventStatus eventStatus { get; private set; }
-    internal LocationId? locationId { get; private set; }
 
     private EventRoot(EventId id) : base(id)
     {
         eventTitle = EventTitle.Create("Working Title");
         eventDescription = EventDescription.Create(string.Empty);
-        Visibility = EventVisibility.Private;
+        isPublic = false;
         maxGuests = 5;
         eventStatus = EventStatus.Draft;
     }
@@ -36,5 +35,15 @@ public class EventRoot : AggregateRoot<EventId>
     public void SetMaxGuests(int max)
     {
         maxGuests = max;
+    }
+
+    public void UpdateTitle(EventTitle title)
+    {
+        eventTitle = title;
+
+        if (eventStatus == EventStatus.Ready)
+        {
+            eventStatus = EventStatus.Draft;
+        }
     }
 }
