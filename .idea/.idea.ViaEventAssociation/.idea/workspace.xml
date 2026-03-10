@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fadcf82f-6d93-439f-9a7c-a7f8db6b7028" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/UpdateDescription/UpdateDescriptionTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ViaEventAssociation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ViaEventAssociation/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/CreateEvent/CreateEventTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/CreateEvent/CreateEventTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/UpdateTitle/UpdateTitleOfEventTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/UpdateTitle/UpdateTitleOfEventTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventDescription.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventRoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventRoot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventTitle.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +30,7 @@
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Fakes/Class1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/CreateEvent/CreateEventTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/EventFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/UpdateDescription/UpdateDescriptionTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/UpdateTitle/UpdateTitleOfEventTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/OperationalResult/ResultTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventId.cs" root0="FORCE_HIGHLIGHTING" />
@@ -104,6 +111,7 @@
       <workItem from="1772906332814" duration="370000" />
       <workItem from="1772959633340" duration="12960000" />
       <workItem from="1773119352934" duration="1021000" />
+      <workItem from="1773120775481" duration="5143000" />
     </task>
     <servers />
   </component>
