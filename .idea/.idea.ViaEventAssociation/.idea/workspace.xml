@@ -5,28 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fadcf82f-6d93-439f-9a7c-a7f8db6b7028" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/CreateEvent/CreateEventTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/EventFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventDescription.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventId.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventRoot.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventStatus.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventTitle.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventVisibility.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/GuestAggregate/Class1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/LocationAggregate/LocationId.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/VeaAdminAggregate/Class1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Common/Bases/AggregateRoot.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Common/Bases/ValueObject.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/UpdateTitle/UpdateTitleOfEventTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ViaEventAssociation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ViaEventAssociation/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Documentation/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/UnitTests/Features/Class1.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/UnitTests/UnitTests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/UnitTests/UnitTests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ViaEventAssociation.slnx" beforeDir="false" afterPath="$PROJECT_DIR$/ViaEventAssociation.slnx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/Class1.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Class1.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Common/Bases/Class1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Common/Bases/Entity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/ViaEventAssociation.Core.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/ViaEventAssociation.Core.Domain.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/CreateEvent/CreateEventTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/CreateEvent/CreateEventTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventRoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventRoot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/VeaAdminAggregate/Class1.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,13 +28,13 @@
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Fakes/Class1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/CreateEvent/CreateEventTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/EventFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/UpdateTitle/UpdateTitleOfEventTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/OperationalResult/ResultTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventId.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventRoot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventStatus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventVisibility.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/GuestAggregate/Class1.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/VeaAdminAggregate/Class1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Common/Bases/AggregateRoot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Common/Bases/Entity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Common/Bases/ValueObject.cs" root0="FORCE_HIGHLIGHTING" />
@@ -80,7 +63,7 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;SK__Assignment4&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;SK__Assignment3&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -121,6 +104,10 @@
       <workItem from="1772525387795" duration="810000" />
       <workItem from="1772526251563" duration="1347000" />
       <workItem from="1772534897699" duration="3000" />
+      <workItem from="1772534952140" duration="505000" />
+      <workItem from="1772906332814" duration="370000" />
+      <workItem from="1772959633340" duration="12960000" />
+      <workItem from="1773119352934" duration="633000" />
     </task>
     <servers />
   </component>
