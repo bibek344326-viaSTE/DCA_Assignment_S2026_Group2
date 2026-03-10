@@ -1,4 +1,5 @@
 using ViaEventAssociation.Core.Domain.Aggregates.EventAggregate;
+using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace UnitTests.Features.Event.UpdateTitle;
 
@@ -8,7 +9,7 @@ public class UpdateTitleOfEventTests
     [Theory]
     [InlineData("Scary Movie Night!")]
     [InlineData("333")] //min length
-    [InlineData("Fun Night With Friends Watching Movies Eating Snacks And Enjoying Time")]
+    [InlineData("Fun Night With Friends Watching Movies Eating Snack And Enjoying Time Enjoy")]
     public void UpdateTitleOfEvent_TitleLengthBetween3And75Characters_EventInDraftStatus_TitleUpdated(string title)
     {
         // Arrange 
@@ -45,10 +46,11 @@ public class UpdateTitleOfEventTests
         var evt = EventFactory.Init().Build();
 
         // Act
-        evt.UpdateTitle("");
+        var result = evt.UpdateTitle("");
         
         // Assert
-        Assert.Equal("", evt.eventTitle);
+        Assert.True(result.IsFailure);
+        Assert.Contains(Error.BlankString.Message, result.Error.Message);
     }
     
         //ID:UC2.F2
@@ -61,25 +63,27 @@ public class UpdateTitleOfEventTests
         var evt = EventFactory.Init().Build();
 
         // Act
-        evt.UpdateTitle(title);
+        var result = evt.UpdateTitle(title);
         
         // Assert
-        Assert.Equal(title, evt.eventTitle);
+        Assert.True(result.IsFailure);
+        Assert.Contains(Error.TooShortTitle(3).Message, result.Error.Message);
     }
     
      // ID:UC2.F3
     [Theory]
-    [InlineData("Fun Night With Friends Watching Movies Eating Snacks And Enjoying Time")]
+    [InlineData("Fun Night With Friends Watching Movies Eating Snacks And Enjoying Time With Extra Fun")]
     [InlineData("Fun Night With Friends Watching Movies Eating Snacks And Enjoying Time.........Enjoy Time")] // 150 characters
     public void UpdateTitle_TitleLengthMoreThan75Characters_FailureMessageReturned(string title) {
         // Arrange
         var evt = EventFactory.Init().Build();
 
         // Act
-        evt.UpdateTitle(title);
+        var result = evt.UpdateTitle(title);
 
         // Assert
-        Assert.Equal(title, evt.eventTitle);
+        Assert.True(result.IsFailure);
+        Assert.Contains(Error.TooLongTitle(75).Message, result.Error.Message);
     }
 
     // ID:UC2.F4
@@ -90,10 +94,11 @@ public class UpdateTitleOfEventTests
         string title = null;
 
         // Act
-        evt.UpdateTitle(title);
+        var result = evt.UpdateTitle(title);
 
         // Assert
-        Assert.Null(evt.eventTitle);
+        Assert.True(result.IsFailure);
+        Assert.Contains(Error.NullString.Message, result.Error.Message);
     }
 
     // ID:UC2.F5
@@ -102,8 +107,12 @@ public class UpdateTitleOfEventTests
         // Arrange
         var evt = EventFactory.Init().WithStatus(EventStatus.Active).Build();
 
-        // Act + Assert
-        Assert.Throws<InvalidOperationException>(() => evt.UpdateTitle("Scary Movie Night!"));
+       // Act
+        var result = evt.UpdateTitle("Scary Movie Night!");
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Contains(Error.EventStatusIsActive.Message, result.Error.Message);
     }
 
     // ID:UC2.F6
@@ -112,7 +121,11 @@ public class UpdateTitleOfEventTests
         // Arrange
         var evt = EventFactory.Init().WithStatus(EventStatus.Cancelled).Build();
 
-        // Act + Assert
-        Assert.Throws<InvalidOperationException>(() => evt.UpdateTitle("Scary Movie Night!"));
+        // Act
+        var result = evt.UpdateTitle("Scary Movie Night!");
+        
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Contains(Error.EventStatusIsCanceled.Message, result.Error.Message);
     }
 }

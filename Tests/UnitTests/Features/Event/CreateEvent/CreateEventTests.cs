@@ -59,5 +59,4 @@ public class CreateEventTests
         // Assert
         Assert.False(evt.isPublic);
     }
-    
 }

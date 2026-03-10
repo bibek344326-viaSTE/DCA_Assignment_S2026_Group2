@@ -12,4 +12,8 @@
         </AssemblyAttribute>
     </ItemGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\..\ViaEventAssociation.Core.Tools.OperationResult\ViaEventAssociation.Core.Tools.OperationResult.csproj" />
+    </ItemGroup>
+
 </Project>

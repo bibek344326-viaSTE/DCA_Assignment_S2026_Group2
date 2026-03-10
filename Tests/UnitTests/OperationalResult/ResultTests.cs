@@ -4,8 +4,8 @@ namespace UnitTests.OperationalResult;
 
 public class ResultTests
 {
-    private static readonly ResultError SampleError = new("ERR_001", "Something went wrong");
-    private static readonly ResultError AnotherError = new("ERR_002", "Another failure");
+    private static readonly Error SampleError = new("ERR_001", "Something went wrong");
+    private static readonly Error AnotherError = new("ERR_002", "Another failure");
 
     // --- Success creation ---
 
@@ -172,7 +172,7 @@ public class ResultTests
     [Fact]
     public void ResultError_HasCodeAndMessage()
     {
-        var error = new ResultError("NOT_FOUND", "Item was not found");
+        var error = new Error("NOT_FOUND", "Item was not found");
 
         Assert.Equal("NOT_FOUND", error.Code);
         Assert.Equal("Item was not found", error.Message);
@@ -181,8 +181,8 @@ public class ResultTests
     [Fact]
     public void ResultError_ValueEquality_WorksCorrectly()
     {
-        var error1 = new ResultError("ERR", "msg");
-        var error2 = new ResultError("ERR", "msg");
+        var error1 = new Error("ERR", "msg");
+        var error2 = new Error("ERR", "msg");
 
         Assert.Equal(error1, error2);
     }
