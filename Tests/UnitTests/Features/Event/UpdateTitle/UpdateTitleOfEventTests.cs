@@ -13,13 +13,12 @@ public class UpdateTitleOfEventTests
     {
         // Arrange 
         var evt = EventFactory.Init().WithStatus(EventStatus.Draft).Build();
-        var convertedTitle = EventTitle.Create(title);
         
         // Act
-        evt.UpdateTitle(convertedTitle);
+        evt.UpdateTitle(title);
         
         // Assert
-        Assert.Equal(title, evt.eventTitle.Value);
+        Assert.Equal(title, evt.eventTitle);
     }
     
     //ID.UC2.S2
@@ -28,13 +27,12 @@ public class UpdateTitleOfEventTests
     {
        // Arrange 
        var evt = EventFactory.Init().WithStatus(EventStatus.Ready).Build();
-       var convertedTitle = EventTitle.Create("Graduation Gala");
        
        // Act
-       evt.UpdateTitle(convertedTitle);
+       evt.UpdateTitle("Graduation Gala");
        
          // Assert
-        Assert.Equal("Graduation Gala", evt.eventTitle.Value);
+        Assert.Equal("Graduation Gala", evt.eventTitle);
         Assert.Equal(EventStatus.Draft, evt.eventStatus);
 
     }
@@ -47,10 +45,10 @@ public class UpdateTitleOfEventTests
         var evt = EventFactory.Init().Build();
 
         // Act
-        var result = EventTitle.Create("");
+        evt.UpdateTitle("");
         
         // Assert
-        Assert.Equal("", result.Value);
+        Assert.Equal("", evt.eventTitle);
     }
     
         //ID:UC2.F2
@@ -63,10 +61,10 @@ public class UpdateTitleOfEventTests
         var evt = EventFactory.Init().Build();
 
         // Act
-        var result = EventTitle.Create(title);
+        evt.UpdateTitle(title);
         
         // Assert
-        Assert.Equal(title, result.Value);
+        Assert.Equal(title, evt.eventTitle);
     }
     
      // ID:UC2.F3
@@ -78,10 +76,10 @@ public class UpdateTitleOfEventTests
         var evt = EventFactory.Init().Build();
 
         // Act
-        var result = EventTitle.Create(title);
+        evt.UpdateTitle(title);
 
         // Assert
-        Assert.Equal(title, result.Value);
+        Assert.Equal(title, evt.eventTitle);
     }
 
     // ID:UC2.F4
@@ -92,10 +90,10 @@ public class UpdateTitleOfEventTests
         string title = null;
 
         // Act
-        var result = EventTitle.Create(title);
+        evt.UpdateTitle(title);
 
         // Assert
-        Assert.Null(result.Value);
+        Assert.Null(evt.eventTitle);
     }
 
     // ID:UC2.F5
@@ -103,13 +101,9 @@ public class UpdateTitleOfEventTests
     public void UpdateTitle_EventInActiveStatus_FailureMessageReturned() {
         // Arrange
         var evt = EventFactory.Init().WithStatus(EventStatus.Active).Build();
-        var convertedTitle = EventTitle.Create("Scary Movie Night!");
 
-        // Act
-        evt.UpdateTitle(convertedTitle);
-        
-        // Assert
-        Assert.Equal("Scary Movie Night!", evt.eventTitle.Value);
+        // Act + Assert
+        Assert.Throws<InvalidOperationException>(() => evt.UpdateTitle("Scary Movie Night!"));
     }
 
     // ID:UC2.F6
@@ -117,12 +111,8 @@ public class UpdateTitleOfEventTests
     public void UpdateTitle_EventInCancelledStatus_FailureMessageReturned() {
         // Arrange
         var evt = EventFactory.Init().WithStatus(EventStatus.Cancelled).Build();
-        var convertedTitle = EventTitle.Create("Scary Movie Night!");
 
-        // Act
-        evt.UpdateTitle(convertedTitle);
-
-        // Assert
-        Assert.Equal("Scary Movie Night!", evt.eventTitle.Value);
+        // Act + Assert
+        Assert.Throws<InvalidOperationException>(() => evt.UpdateTitle("Scary Movie Night!"));
     }
 }

@@ -29,7 +29,7 @@ public class CreateEventTests
         evt = EventFactory.Init().Build();
 
         // Assert
-        Assert.Equal("Working Title", evt.eventTitle.Value);
+        Assert.Equal("Working Title", evt.eventTitle);
     }
     
     // ID:UC1.S3
@@ -43,7 +43,7 @@ public class CreateEventTests
 
         // Assert
 
-        Assert.Equal(string.Empty, evt.eventDescription.Value);
+        Assert.Equal(string.Empty, evt.eventDescription);
     }
 
     //S4
