@@ -100,4 +100,54 @@ public class EventRoot : AggregateRoot<EventId>
 
         return Result.Success();
     }
+    
+    public Result<None> UpdateDateTime(DateTime startDateTime, DateTime endDateTime)
+    {
+        var errors = new HashSet<Error>();
+
+        if (eventStatus is EventStatus.Active)
+            errors.Add(Error.EventStatusIsActive);
+
+        if (eventStatus is EventStatus.Cancelled)
+            errors.Add(Error.EventStatusIsCanceled);
+        
+        if (startDateTime < DateTime.Now)
+            errors.Add(Error.EventStartTimeInThePast);
+        
+        // Check start date is before end date
+        if (startDateTime >= endDateTime)
+            errors.Add(Error.InvalidDateTimeRange);
+        
+        // duration must be at least 1 hour (works across dates)
+        if ((endDateTime - startDateTime).TotalMinutes < 60)
+            errors.Add(Error.DurationTooShort);
+        
+        if ((endDateTime - startDateTime).TotalHours > 10)
+            errors.Add(Error.DurationTooLong);
+
+        
+        if (startDateTime.TimeOfDay < TimeSpan.FromHours(8))
+            errors.Add(Error.InvalidStartDateTime);
+        
+        if (startDateTime.Date < endDateTime.Date &&
+            endDateTime.TimeOfDay > TimeSpan.FromHours(1))
+        {
+            errors.Add(Error.InvalidEndDateTime);
+        }
+
+        // If there are errors return failure
+        if (errors.Any())
+            return Result.Failure<None>(errors);
+
+        // Update values
+        eventStartDateTime = startDateTime;
+        eventEndDateTime = endDateTime;
+
+        if (eventStatus == EventStatus.Ready)
+        {
+            eventStatus = EventStatus.Draft;
+        }
+
+        return Result.Success();
+    }
 }
