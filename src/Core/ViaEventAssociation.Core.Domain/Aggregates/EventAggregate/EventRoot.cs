@@ -14,6 +14,9 @@ public class EventRoot : AggregateRoot<EventId>
     internal int maxGuests { get; private set; }
     internal EventStatus eventStatus { get; private set; }
 
+    public EventStatus Status => eventStatus;
+    public EventVisibility Visibility => isPublic ? EventVisibility.Public : EventVisibility.Private;
+
     private EventRoot(EventId id) : base(id)
     {
         eventTitle = "Working Title";
@@ -148,6 +151,16 @@ public class EventRoot : AggregateRoot<EventId>
             eventStatus = EventStatus.Draft;
         }
 
+        return Result.Success();
+    }
+    
+    
+    public Result<None> MakePublic()
+    {
+        if (eventStatus is EventStatus.Cancelled)
+            return Error.EventStatusIsCanceled;
+
+        isPublic = true;
         return Result.Success();
     }
 }
