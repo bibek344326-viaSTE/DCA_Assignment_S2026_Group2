@@ -21,7 +21,7 @@ public class MakePublicTests
         @event.MakePublic();
 
         // Assert
-        Assert.Equal(EventVisibility.Public, @event.Visibility);
+        Assert.True(@event.IsPublic);
         Assert.Equal(eventStatus, @event.Status);
     }
     
@@ -40,5 +40,7 @@ public class MakePublicTests
         // Assert
         Assert.True(result.IsFailure);
         Assert.Contains(Error.EventStatusIsCanceled.Message, result.Error.Message);
-    }
+    } 
+    
+    
 }

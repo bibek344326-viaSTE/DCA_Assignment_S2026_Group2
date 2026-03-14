@@ -15,7 +15,7 @@ public class EventRoot : AggregateRoot<EventId>
     internal EventStatus eventStatus { get; private set; }
 
     public EventStatus Status => eventStatus;
-    public EventVisibility Visibility => isPublic ? EventVisibility.Public : EventVisibility.Private;
+    public bool IsPublic => isPublic;
 
     private EventRoot(EventId id) : base(id)
     {
@@ -154,13 +154,24 @@ public class EventRoot : AggregateRoot<EventId>
         return Result.Success();
     }
     
-    
     public Result<None> MakePublic()
     {
         if (eventStatus is EventStatus.Cancelled)
             return Error.EventStatusIsCanceled;
 
         isPublic = true;
+        return Result.Success();
+    }
+    
+    public Result<None> MakePrivate()
+    {
+        if (eventStatus is EventStatus.Active)
+            return Error.EventStatusIsActive;
+
+        if (eventStatus is EventStatus.Cancelled)
+            return Error.EventStatusIsCanceled;
+
+        isPublic = false;
         return Result.Success();
     }
 }
