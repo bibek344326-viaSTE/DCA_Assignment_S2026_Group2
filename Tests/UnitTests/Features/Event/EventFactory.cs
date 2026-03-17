@@ -1,4 +1,5 @@
 using ViaEventAssociation.Core.Domain.Aggregates.EventAggregate;
+using ViaEventAssociation.Core.Domain.Aggregates.LocationAggregate;
 
 namespace UnitTests.Features.Event;
 
@@ -32,5 +33,11 @@ public class EventFactory
     public EventRoot Build()
     {
         return _event;
+    }
+    
+    public EventFactory WithLocation(LocationId locationId)
+    {
+        _event.SetLocation(locationId);
+        return this;
     }
 }

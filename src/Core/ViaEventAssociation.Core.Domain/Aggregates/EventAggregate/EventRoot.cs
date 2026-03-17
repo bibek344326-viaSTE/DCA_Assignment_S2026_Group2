@@ -14,6 +14,8 @@ public class EventRoot : AggregateRoot<EventId>
     internal int maxGuests { get; private set; }
     internal EventStatus eventStatus { get; private set; }
 
+    internal LocationId? locationId { get; private set; }
+
     public EventStatus Status => eventStatus;
     public bool IsPublic => isPublic;
 
@@ -34,11 +36,6 @@ public class EventRoot : AggregateRoot<EventId>
     public void SetEventStatus(EventStatus status)
     {
         eventStatus = status;
-    }
-
-    public void SetMaxGuests(int max)
-    {
-        maxGuests = max;
     }
 
     public Result<None> UpdateTitle(string title)
@@ -172,6 +169,36 @@ public class EventRoot : AggregateRoot<EventId>
             return Error.EventStatusIsCanceled;
 
         isPublic = false;
+        return Result.Success();
+    }
+    
+    public Result<None> SetMaxGuests(int max)
+    {
+        var errors = new HashSet<Error>();
+
+        if (eventStatus is EventStatus.Cancelled)
+            errors.Add(Error.EventStatusIsCanceled);
+
+        if (max < 5)
+            errors.Add(Error.TooFewGuests(5));
+
+        if (max > 50)
+            errors.Add(Error.TooManyGuests(50));
+
+        if (eventStatus is EventStatus.Active && max < maxGuests)
+            errors.Add(Error.EventStatusIsActiveAndMaxGuestsReduced);
+        
+        if (errors.Any())
+            return Result.Failure<None>(errors);
+
+        maxGuests = max;
+
+        return Result.Success();
+    } 
+    
+    public Result<None> SetLocation(LocationId locationId)
+    {
+        this.locationId = locationId;
         return Result.Success();
     }
 }

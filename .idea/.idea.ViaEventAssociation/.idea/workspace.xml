@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fadcf82f-6d93-439f-9a7c-a7f8db6b7028" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/MakePrivate/MakePrivateTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/MakePublic/MakePublicTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/MakePublic/MakePublicTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/SetMaxGuests/SetMaxGuests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Location/LocationFactory..cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/LocationAggregate/Location.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ViaEventAssociation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ViaEventAssociation/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/EventFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/EventFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventRoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventRoot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ViaEventAssociation.Core.Tools.OperationResult/Error.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViaEventAssociation.Core.Tools.OperationResult/Error.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,15 +38,18 @@
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/EventFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/MakePrivate/MakePrivateTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/MakePublic/MakePublicTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/SetMaxGuests/SetMaxGuests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/UpdateDescription/UpdateDescriptionTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/UpdateTime/UpdateTimeTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/UpdateTitle/UpdateTitleOfEventTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Location/LocationFactory..cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/OperationalResult/ResultTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventId.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventRoot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventStatus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventVisibility.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/GuestAggregate/Class1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/LocationAggregate/Location.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Common/Bases/AggregateRoot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Common/Bases/Entity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Common/Bases/ValueObject.cs" root0="FORCE_HIGHLIGHTING" />
@@ -126,6 +133,8 @@
       <workItem from="1773210847301" duration="418000" />
       <workItem from="1773230077449" duration="9730000" />
       <workItem from="1773510319266" duration="10105000" />
+      <workItem from="1773642802219" duration="3783000" />
+      <workItem from="1773725674398" duration="3299000" />
     </task>
     <servers />
   </component>
