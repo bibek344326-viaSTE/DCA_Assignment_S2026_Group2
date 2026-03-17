@@ -27,5 +27,21 @@ public record Error(string Code, string Message)
     
     public static Error DurationTooLong => new ("INVALID_DURATION", "The duration of the event is invalid, maximum duration is {maxDuration}, start: {start}, end: {end}.");
     
-    public static Error EventStartTimeInThePast => new ("EVENT_START_TIME_IN_PAST", "The start time of the event cannot be in the past.");
+    public static Error EventStartTimeInThePast => new ("EVENT_START_TIME_IN_PAST", "The start time of the event cannot be in the past."); 
+    
+    public static Error TooFewGuests(int minGuests) =>
+        new("TOO_FEW_GUESTS",
+            $"The maximum number of guests must be at least {minGuests}.");
+
+    public static Error TooManyGuests(int maxGuests) =>
+        new("TOO_MANY_GUESTS",
+            $"The maximum number of guests cannot exceed {maxGuests}.");
+
+    public static Error EventStatusIsActiveAndMaxGuestsReduced =>
+        new("ACTIVE_EVENT_GUESTS_REDUCED",
+            "Maximum number of guests of an active event cannot be reduced (it may only be increased).");
+
+    public static Error TooManyGuestsForLocation(int maxCapacity) =>
+        new("TOO_MANY_GUESTS_FOR_LOCATION",
+            $"The selected number of guests exceeds the location capacity of {maxCapacity} people.");
 }
