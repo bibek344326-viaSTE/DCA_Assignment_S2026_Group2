@@ -10,20 +10,20 @@ public class EventRoot : AggregateRoot<EventId>
     internal string eventDescription { get; private set; }
     internal DateTime eventStartDateTime { get; private set; }
     internal DateTime eventEndDateTime { get; private set; }
-    internal bool isPublic { get; private set; }
+    internal bool? isPublic { get; private set; }
     internal int maxGuests { get; private set; }
     internal EventStatus eventStatus { get; private set; }
 
     internal LocationId? locationId { get; private set; }
 
     public EventStatus Status => eventStatus;
-    public bool IsPublic => isPublic;
+    public bool? IsPublic => isPublic;
 
     private EventRoot(EventId id) : base(id)
     {
         eventTitle = "Working Title";
         eventDescription = string.Empty;
-        isPublic = false;
+        isPublic = null;
         maxGuests = 5;
         eventStatus = EventStatus.Draft;
     }
@@ -199,6 +199,62 @@ public class EventRoot : AggregateRoot<EventId>
     public Result<None> SetLocation(LocationId locationId)
     {
         this.locationId = locationId;
+        return Result.Success();
+    }
+
+    public Result<None> Ready()
+    {
+        var errors = new HashSet<Error>();
+
+        if (eventStatus is EventStatus.Cancelled)
+            errors.Add(Error.EventStatusIsCanceled);
+
+        if (eventTitle == "Working Title")
+            errors.Add(Error.EventTitleIsDefault);
+
+        if (string.IsNullOrEmpty(eventDescription))
+            errors.Add(Error.EventDescriptionMissing);
+
+        var isDateTimeMissing = eventStartDateTime == DateTime.MinValue || eventEndDateTime == DateTime.MinValue;
+        if (isDateTimeMissing)
+            errors.Add(Error.EventDateTimeMissing);
+
+        if (!isDateTimeMissing && eventStartDateTime < DateTime.Now)
+            errors.Add(Error.EventStartTimeInThePast);
+
+        if (isPublic is null)
+            errors.Add(Error.EventVisibilityMissing);
+
+        if (maxGuests < 5 || maxGuests > 50)
+            errors.Add(Error.InvalidMaxGuestsRange);
+
+        if (errors.Any())
+            return Result.Failure<None>(errors);
+
+        eventStatus = EventStatus.Ready;
+        return Result.Success();
+    }
+
+    public Result<None> Activate()
+    {
+        // If event is cancelled, it cannot be activated
+        if (eventStatus is EventStatus.Cancelled)
+            return Error.EventStatusIsCanceled;
+
+        // If already active, no change needed - success
+        if (eventStatus is EventStatus.Active)
+            return Result.Success();
+
+        // If in Draft status, first try to make it Ready
+        if (eventStatus is EventStatus.Draft)
+        {
+            var readyResult = Ready();
+            if (readyResult.IsFailure)
+                return readyResult;
+        }
+
+        // At this point, event is Ready, transition to Active
+        eventStatus = EventStatus.Active;
         return Result.Success();
     }
 }
