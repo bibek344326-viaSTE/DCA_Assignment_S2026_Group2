@@ -111,9 +111,6 @@ public class EventRoot : AggregateRoot<EventId>
         if (eventStatus is EventStatus.Cancelled)
             errors.Add(Error.EventStatusIsCanceled);
         
-        if (startDateTime < DateTime.Now)
-            errors.Add(Error.EventStartTimeInThePast);
-        
         // Check start date is before end date
         if (startDateTime >= endDateTime)
             errors.Add(Error.InvalidDateTimeRange);

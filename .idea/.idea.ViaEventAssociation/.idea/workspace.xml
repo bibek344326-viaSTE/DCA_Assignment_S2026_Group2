@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fadcf82f-6d93-439f-9a7c-a7f8db6b7028" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/ActivatesEvent/ActivatesEventTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/ReadiesAnEvent/ReadiesEventTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Guest/RegisterGuests/RegisterGuest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/GuestAggregate/Guest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ViaEventAssociation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ViaEventAssociation/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/CreateEvent/CreateEventTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/CreateEvent/CreateEventTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/EventFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/EventFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventRoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventRoot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/GuestAggregate/Class1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/GuestAggregate/Email.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViaEventAssociation.Core.Tools.OperationResult/Error.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViaEventAssociation.Core.Tools.OperationResult/Error.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/GuestAggregate/Guest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/GuestAggregate/Guest.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,6 +138,7 @@
       <workItem from="1774084416234" duration="14247000" />
       <workItem from="1774243946604" duration="2732000" />
       <workItem from="1775114620808" duration="269000" />
+      <workItem from="1775115467236" duration="2092000" />
     </task>
     <servers />
   </component>
