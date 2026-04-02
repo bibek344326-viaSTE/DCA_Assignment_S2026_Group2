@@ -57,6 +57,6 @@ public class CreateEventTests
         evt = EventFactory.Init().Build();
 
         // Assert
-        Assert.False(evt.isPublic);
+        Assert.Null(evt.isPublic);
     }
 }

@@ -44,4 +44,52 @@ public record Error(string Code, string Message)
     public static Error TooManyGuestsForLocation(int maxCapacity) =>
         new("TOO_MANY_GUESTS_FOR_LOCATION",
             $"The selected number of guests exceeds the location capacity of {maxCapacity} people.");
+    
+    public static Error EventTitleIsDefault =>
+        new("EVENT_TITLE_DEFAULT", "The event title must be changed from the default title.");
+
+    public static Error EventDescriptionMissing =>
+        new("EVENT_DESCRIPTION_MISSING", "The event description must be set before the event can be made ready.");
+
+    public static Error EventDateTimeMissing =>
+        new("EVENT_DATE_TIME_MISSING", "The event start and end date/time must be set before the event can be made ready.");
+
+    public static Error EventVisibilityMissing =>
+        new("EVENT_VISIBILITY_MISSING", "The event visibility must be set before the event can be made ready.");
+
+    public static Error InvalidMaxGuestsRange =>
+        new("INVALID_MAX_GUESTS_RANGE", "Maximum number of guests must be between 5 and 50.");
+    
+    public static Error EventTimeIsInThePast =>
+        new("EVENT_TIME_IN_PAST", "Event start time cannot be in the past.");
+
+    public static Error InvalidEmail =>
+        new("INVALID_EMAIL", "The provided email address is not valid.");
+
+    public static Error TooLongEmail(int maxEmailLength) =>
+        new("EMAIL_TOO_LONG", $"The provided email is too long, maximum length is {maxEmailLength} characters.");
+    
+    public static Error EmailMustBeVia =>
+        new("EMAIL_MUST_BE_VIA", "The email must end with @via.dk.");
+
+    public static Error InvalidViaEmailIdentifier =>
+        new("INVALID_VIA_EMAIL_IDENTIFIER", "The email identifier must be either 3 or 4 letters, or 6 digits.");
+
+    public static Error FirstNameTooShort(int minLength) =>
+        new("FIRST_NAME_TOO_SHORT", $"First name must be at least {minLength} characters long.");
+
+    public static Error FirstNameTooLong(int maxLength) =>
+        new("FIRST_NAME_TOO_LONG", $"First name cannot be longer than {maxLength} characters.");
+
+    public static Error LastNameTooShort(int minLength) =>
+        new("LAST_NAME_TOO_SHORT", $"Last name must be at least {minLength} characters long.");
+
+    public static Error LastNameTooLong(int maxLength) =>
+        new("LAST_NAME_TOO_LONG", $"Last name cannot be longer than {maxLength} characters.");
+
+    public static Error InvalidFirstName =>
+        new("INVALID_FIRST_NAME", "First name must contain only letters a-z.");
+
+    public static Error InvalidLastName =>
+        new("INVALID_LAST_NAME", "Last name must contain only letters a-z.");
 }

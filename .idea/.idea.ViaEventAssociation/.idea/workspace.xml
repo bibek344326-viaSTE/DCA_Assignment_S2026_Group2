@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fadcf82f-6d93-439f-9a7c-a7f8db6b7028" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/SetMaxGuests/SetMaxGuests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Location/LocationFactory..cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/LocationAggregate/Location.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/ActivatesEvent/ActivatesEventTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/ReadiesAnEvent/ReadiesEventTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Guest/RegisterGuests/RegisterGuest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/GuestAggregate/Guest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ViaEventAssociation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ViaEventAssociation/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/CreateEvent/CreateEventTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/CreateEvent/CreateEventTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/EventFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/EventFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventRoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventRoot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/GuestAggregate/Class1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/GuestAggregate/Email.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ViaEventAssociation.Core.Tools.OperationResult/Error.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViaEventAssociation.Core.Tools.OperationResult/Error.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,8 +28,8 @@
   </component>
   <component name="CopilotUserSelectedModel">
     <selectedModels>
-      <entry key="chat-panel" value="GPT-5.2-Codex" />
-      <entry key="agent-panel" value="GPT-5.2-Codex" />
+      <entry key="chat-panel" value="Claude Haiku 4.5" />
+      <entry key="agent-panel" value="Claude Haiku 4.5" />
     </selectedModels>
   </component>
   <component name="Git.Settings">
@@ -34,6 +37,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Fakes/Class1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/ActivatesEvent/ActivatesEventTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/CreateEvent/CreateEventTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/EventFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/MakePrivate/MakePrivateTests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -42,13 +46,15 @@
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/UpdateDescription/UpdateDescriptionTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/UpdateTime/UpdateTimeTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/UpdateTitle/UpdateTitleOfEventTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Guest/RegisterGuests/RegisterGuest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Location/LocationFactory..cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/OperationalResult/ResultTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventId.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventRoot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventStatus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventVisibility.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/GuestAggregate/Class1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/GuestAggregate/Email.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/GuestAggregate/Guest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/LocationAggregate/Location.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Common/Bases/AggregateRoot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Common/Bases/Entity.cs" root0="FORCE_HIGHLIGHTING" />
@@ -75,6 +81,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;849f6619-0a0a-4a4b-ae85-8257484645a0.executor&quot;: &quot;Debug&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -135,6 +142,9 @@
       <workItem from="1773510319266" duration="10105000" />
       <workItem from="1773642802219" duration="3783000" />
       <workItem from="1773725674398" duration="3299000" />
+      <workItem from="1774084416234" duration="14247000" />
+      <workItem from="1774243946604" duration="2732000" />
+      <workItem from="1775114620808" duration="269000" />
     </task>
     <servers />
   </component>
