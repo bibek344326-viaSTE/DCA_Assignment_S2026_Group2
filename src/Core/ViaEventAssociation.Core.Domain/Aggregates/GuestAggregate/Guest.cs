@@ -16,7 +16,14 @@ public class Guest : AggregateRoot<Email>
         lastName = string.Empty;
     }
 
-    public static Guest Create(string email, string firstName, string lastName)
+    private Guest(Email guestEmail, string firstName, string lastName) : base(guestEmail)
+    {
+        email = guestEmail;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public static Result<Guest> Create(string email, string firstName, string lastName)
     {
         var errors = new List<Error>();
 
