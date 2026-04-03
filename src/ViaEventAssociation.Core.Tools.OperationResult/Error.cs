@@ -114,4 +114,16 @@ public record Error(string Code, string Message)
 
     public static Error GuestNotFound =>
         new("GUEST_NOT_FOUND", "The specified guest could not be found.");
+
+    public static Error EventNotReadyOrActive =>
+        new("EVENT_NOT_READY_OR_ACTIVE", "Guest can only be invited to an event that is Ready or Active.");
+
+    public static Error GuestAlreadyInvited =>
+        new("GUEST_ALREADY_INVITED", "Guest is already invited to this event.");
+
+    public static Error InvitationNotFound =>
+        new("INVITATION_NOT_FOUND", "There is no pending invitation for this guest.");
+
+    public static Error EventCancelled =>
+        new("EVENT_CANCELLED", "Cannot accept invitation for a cancelled event.");
 }
