@@ -26,7 +26,7 @@ public class SetMaxGuests
         @event.SetMaxGuests(maxGuests);
 
         // Assert
-        Assert.Equal(maxGuests, @event.maxGuests);
+        Assert.Equal(maxGuests, @event.MaxGuests);
     }
     
     //ID:UC7:S2
@@ -49,7 +49,7 @@ public class SetMaxGuests
         @event.SetMaxGuests(maxGuests);
 
         // Assert
-        Assert.Equal(maxGuests, @event.maxGuests);
+        Assert.Equal(maxGuests, @event.MaxGuests);
     }
     
     //ID:UC7:S3
@@ -68,7 +68,7 @@ public class SetMaxGuests
         @event.SetMaxGuests(maxGuests);
 
         // Assert
-        Assert.Equal(maxGuests, @event.maxGuests);
+        Assert.Equal(maxGuests, @event.MaxGuests);
     }    
     
     //ID:UC7:F1
@@ -125,7 +125,7 @@ public class SetMaxGuests
 
         // Assert
         Assert.True(result.IsSuccess);
-        Assert.Equal(25, @event.maxGuests);
+        Assert.Equal(25, @event.MaxGuests);
     }
 
     //ID:UC7:F4

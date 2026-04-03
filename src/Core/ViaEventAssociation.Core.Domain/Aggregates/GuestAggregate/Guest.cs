@@ -6,26 +6,23 @@ namespace ViaEventAssociation.Core.Domain.Aggregates.GuestAggregate;
 public class Guest : AggregateRoot<Email>
 {
     internal Email email { get; private set; }
-    internal string firstName { get; private set; }
-    internal string lastName { get; private set; }
+    internal string FirstName { get; private set; }
+    internal string LastName { get; private set; }
 
-    private Guest(Email guestEmail) : base(guestEmail)
+    private Guest(Email email, string firstName, string lastName) : base(email)
     {
-        email = guestEmail;
-        firstName = string.Empty;
-        lastName = string.Empty;
+        this.email = email;
+        this.FirstName = firstName;
+        this.LastName = lastName;
     }
 
-    private Guest(Email guestEmail, string firstName, string lastName) : base(guestEmail)
-    {
-        email = guestEmail;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public static Result<Guest> Create(string email, string firstName, string lastName)
+    public static Result<Guest> Create(string? email, string? firstName, string? lastName)
     {
         var errors = new List<Error>();
+
+        email = email?.Trim();
+        firstName = firstName?.Trim();
+        lastName = lastName?.Trim();
 
         var emailResult = Email.Create(email);
         if (emailResult is Failure<Email> emailFailure)
@@ -42,11 +39,11 @@ public class Guest : AggregateRoot<Email>
         if (errors.Any())
             return Result.Failure<Guest>(errors);
 
-        var validEmail = ((Success<Email>)emailResult).Value;
-        var validFirstName = ((Success<string>)firstNameResult).Value;
-        var validLastName = ((Success<string>)lastNameResult).Value;
-
-        return Result.Success(new Guest(validEmail, validFirstName, validLastName));
+        return Result.Success(new Guest(
+            ((Success<Email>)emailResult).Value,
+            ((Success<string>)firstNameResult).Value,
+            ((Success<string>)lastNameResult).Value
+        ));
     }
 
     private static Result<string> ValidateAndFormatName(string? name, bool isFirstName)
@@ -57,39 +54,26 @@ public class Guest : AggregateRoot<Email>
         if (string.IsNullOrWhiteSpace(name))
             return Error.BlankString;
 
-        name = name.Trim();
+        // At this point, name is guaranteed to be non-null and non-whitespace
+        // Trim and store in a non-nullable variable to help the compiler
+        string trimmedName = name.Trim();
 
-        if (name.Length < 2)
+        if (trimmedName.Length < 2)
             return isFirstName ? Error.FirstNameTooShort(2) : Error.LastNameTooShort(2);
 
-        if (name.Length > 25)
+        if (trimmedName.Length > 25)
             return isFirstName ? Error.FirstNameTooLong(25) : Error.LastNameTooLong(25);
 
-        if (!name.All(char.IsLetter))
+        if (!trimmedName.All(char.IsLetter))
             return isFirstName ? Error.InvalidFirstName : Error.InvalidLastName;
 
-        var formatted = char.ToUpper(name[0]) + name.Substring(1).ToLower();
-
+        var formatted = char.ToUpper(trimmedName[0]) + trimmedName.Substring(1).ToLower();
         return Result.Success(formatted);
     }
 
-    public Result<None> AttendEvent(Guid eventId)
-    {
-        return Result.Success();
-    }
-
-    public Result<None> CancelAttendance(Guid eventId)
-    {
-        return Result.Success();
-    }
-
-    public Result<None> RequestToJoinEvent(Guid eventId)
-    {
-        return Result.Success();
-    }
-
-    public Result<None> AcceptInvitation(Guid invitationId)
-    {
-        return Result.Success();
-    }
+    // Behavior (simple for now)
+    public Result<None> AttendEvent(Guid eventId) => Result.Success();
+    public Result<None> CancelAttendance(Guid eventId) => Result.Success();
+    public Result<None> RequestToJoinEvent(Guid eventId) => Result.Success();
+    public Result<None> AcceptInvitation(Guid invitationId) => Result.Success();
 }

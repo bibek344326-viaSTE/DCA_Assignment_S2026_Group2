@@ -25,8 +25,8 @@ public class UpdateTimeTests
         // Assert
         Assert.True(result.IsSuccess);
 
-        Assert.Equal(startTime, evt.eventStartDateTime);
-        Assert.Equal(endTime, evt.eventEndDateTime);
+        Assert.Equal(startTime, evt.EventStartDateTime);
+        Assert.Equal(endTime, evt.EventEndDateTime);
     }
     
     //ID:UC4.S2
@@ -46,9 +46,9 @@ public class UpdateTimeTests
         // Assert
         Assert.True(result.IsSuccess);
 
-        Assert.Equal(startTime, evt.eventStartDateTime);
-        Assert.Equal(endTime, evt.eventEndDateTime);
-        Assert.Equal(EventStatus.Draft, evt.eventStatus);
+        Assert.Equal(startTime, evt.EventStartDateTime);
+        Assert.Equal(endTime, evt.EventEndDateTime);
+        Assert.Equal(EventStatus.Draft, evt.EventStatus);
     }
     
     //ID:UC4.S3
@@ -69,9 +69,9 @@ public class UpdateTimeTests
         // Assert
         Assert.True(result.IsSuccess);
 
-        Assert.Equal(startTime, evt.eventStartDateTime);
-        Assert.Equal(endTime, evt.eventEndDateTime);
-        Assert.Equal(EventStatus.Draft, evt.eventStatus);
+        Assert.Equal(startTime, evt.EventStartDateTime);
+        Assert.Equal(endTime, evt.EventEndDateTime);
+        Assert.Equal(EventStatus.Draft, evt.EventStatus);
     }
     
     // ID:UC4.s4
@@ -92,8 +92,8 @@ public class UpdateTimeTests
 
         // Assert
         Assert.True(result.IsSuccess);
-        Assert.Equal(startTime, evt.eventStartDateTime);
-        Assert.Equal(endTime, evt.eventEndDateTime);
+        Assert.Equal(startTime, evt.EventStartDateTime);
+        Assert.Equal(endTime, evt.EventEndDateTime);
     }
     
     //ID:UC4.S5
@@ -113,8 +113,8 @@ public class UpdateTimeTests
         
         // Assert
         Assert.True(result.IsSuccess);
-        Assert.Equal(startTime, evt.eventStartDateTime);
-        Assert.Equal(endTime, evt.eventEndDateTime);
+        Assert.Equal(startTime, evt.EventStartDateTime);
+        Assert.Equal(endTime, evt.EventEndDateTime);
     }
 
     //ID:UC4.F1
