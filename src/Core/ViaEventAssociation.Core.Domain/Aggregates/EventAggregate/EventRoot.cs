@@ -55,11 +55,6 @@ public class EventRoot : AggregateRoot<EventId>
     {
         return new EventRoot(id);
     }
-
-    public void SetEventStatus(EventStatus status)
-    {
-        eventStatus = status;
-    }
     
     public Result<None> UpdateDescription(string description)
 
