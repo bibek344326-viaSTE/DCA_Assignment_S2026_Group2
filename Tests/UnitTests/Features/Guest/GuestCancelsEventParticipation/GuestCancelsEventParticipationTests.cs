@@ -13,14 +13,23 @@ public class CancelParticipationTests
     {
         var e = EventRoot.Create();
 
-        e.UpdateTitle("Test Event");
-        e.UpdateDescription("Description");
-        e.UpdateDateTime(start ?? DateTime.UtcNow.AddDays(1), DateTime.UtcNow.AddDays(1).AddHours(2));
+        var updateTitleResult = e.UpdateTitle("Test Event");
+        Assert.True(updateTitleResult.IsSuccess);
+
+        var updateDescriptionResult = e.UpdateDescription("Description");
+        Assert.True(updateDescriptionResult.IsSuccess);
+
+        var updateDateTimeResult = e.UpdateDateTime(start ?? DateTime.UtcNow.AddDays(1), DateTime.UtcNow.AddDays(1).AddHours(2));
+        Assert.True(updateDateTimeResult.IsSuccess);
+
         e.MakePublic();
         e.SetMaxGuests(10);
-        e.Ready();
-        e.Activate();
 
+        var readyResult = e.Ready();
+        Assert.True(readyResult.IsSuccess);
+
+        var activateResult = e.Activate();
+        Assert.True(activateResult.IsSuccess);
         return e;
     }
 
