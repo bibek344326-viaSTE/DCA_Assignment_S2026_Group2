@@ -4,6 +4,8 @@
   </Folder>
   <Folder Name="/src/" />
   <Folder Name="/src/Core/">
+    <Project Path="src/Core/ViaEventAssociation.Core.AppEntry/ViaEventAssociation.Core.AppEntry.csproj" />
+    <Project Path="src/Core/ViaEventAssociation.Core.Application/ViaEventAssociation.Core.Application.csproj" />
     <Project Path="src/Core/ViaEventAssociation.Core.Domain/ViaEventAssociation.Core.Domain.csproj" />
   </Folder>
   <Folder Name="/src/Core/Tools/">

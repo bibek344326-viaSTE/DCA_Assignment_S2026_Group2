@@ -5,9 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fadcf82f-6d93-439f-9a7c-a7f8db6b7028" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/CreateEvent/CreateEventCommandHandlerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/UnitTests/Features/Event/CreateEvent/CreateEventCommandTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.AppEntry/Commands/Command.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.AppEntry/Commands/Event/CreateEventCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.AppEntry/Commands/Event/UpdateDescriptionCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.AppEntry/Commands/Event/UpdateTitleCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.AppEntry/ICommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/IEventRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/GuestAggregate/IGuestRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/LocationAggregate/ILocationRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Common/IUnitOfWork.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ViaEventAssociation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ViaEventAssociation/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventRoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventRoot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/GuestAggregate/Guest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/GuestAggregate/Guest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/UnitTests/Fakes/Class1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/UnitTests/Fakes/Class1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViaEventAssociation.slnx" beforeDir="false" afterPath="$PROJECT_DIR$/ViaEventAssociation.slnx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventId.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventId.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +33,8 @@
   </component>
   <component name="CopilotUserSelectedModel">
     <selectedModels>
-      <entry key="chat-panel" value="Claude Haiku 4.5" />
-      <entry key="agent-panel" value="Claude Haiku 4.5" />
+      <entry key="chat-panel" value="GPT-5.2" />
+      <entry key="agent-panel" value="GPT-5.2" />
     </selectedModels>
   </component>
   <component name="Git.Settings">
@@ -31,6 +43,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Fakes/Class1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/ActivatesEvent/ActivatesEventTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/CreateEvent/CreateEventCommandHandlerTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/CreateEvent/CreateEventTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/EventFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Event/MakePrivate/MakePrivateTests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -42,19 +55,25 @@
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Guest/RegisterGuests/RegisterGuest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/Features/Location/LocationFactory..cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/UnitTests/OperationalResult/ResultTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.AppEntry/Commands/Event/UpdateDescriptionCommand.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventId.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventRoot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventStatus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/EventVisibility.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/EventAggregate/IEventRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/GuestAggregate/Email.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/GuestAggregate/Guest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/GuestAggregate/IGuestRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/LocationAggregate/ILocationRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Aggregates/LocationAggregate/Location.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Common/Bases/AggregateRoot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Common/Bases/Entity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Common/Bases/ValueObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Common/IUnitOfWork.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Core/ViaEventAssociation.Core.Domain/Contracts/ISystemTime.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/ViaEventAssociation.Core.Tools.OperationResult/None.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/ViaEventAssociation.Core.Tools.OperationResult/Result.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/ViaEventAssociation.Core.Tools.OperationResult/ResultExtensions.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -72,31 +91,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;849f6619-0a0a-4a4b-ae85-8257484645a0.executor&quot;: &quot;Debug&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;SK__Assignment3&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "849f6619-0a0a-4a4b-ae85-8257484645a0.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "SK__Assignment5",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;Markdown&quot;,
-      &quot;TEXT&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "Markdown",
+      "TEXT"
     ]
   }
-}</component>
+}]]></component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="fadcf82f-6d93-439f-9a7c-a7f8db6b7028" name="Changes" comment="" />

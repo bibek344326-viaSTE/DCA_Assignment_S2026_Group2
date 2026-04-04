@@ -51,7 +51,18 @@ public class EventRoot : AggregateRoot<EventId>
         return Result.Success();
     }
 
+    public static EventRoot Create(EventId id)
+    {
+        return new EventRoot(id);
+    }
+
+    public void SetEventStatus(EventStatus status)
+    {
+        eventStatus = status;
+    }
+    
     public Result<None> UpdateDescription(string description)
+
     {
         if (EventStatus is EventStatus.Active) return Error.EventStatusIsActive;
         if (EventStatus is EventStatus.Cancelled) return Error.EventStatusIsCanceled;

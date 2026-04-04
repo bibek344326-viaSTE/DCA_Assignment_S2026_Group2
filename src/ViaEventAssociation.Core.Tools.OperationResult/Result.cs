@@ -54,6 +54,28 @@ public abstract record Result<T> : Result
         ? failure.Errors.First()
         : throw new InvalidOperationException("Result does not contain errors.");
 
+    public T? Payload => this is Success<T> s ? s.Value : default;
+    
+    public Result<(T, TOther)> Combine<TOther>(Result<TOther> other)
+    {
+        var errors = new List<Error>();
+
+        if (this is Failure<T> lf)
+            errors.AddRange(lf.Errors);
+
+        if (other is Failure<TOther> rf)
+            errors.AddRange(rf.Errors);
+
+        return errors.Count > 0
+            ? Failure<(T, TOther)>(errors)
+            : Success((Payload!, ((Success<TOther>)other).Value));
+    }
+    
+    public Result<TOut> WithPayloadIfSuccess<TOut>(Func<TOut> payloadFactory)
+        => this is Success<T>
+            ? Success(payloadFactory())
+            : Failure<TOut>(((Failure<T>)this).Errors);
+
     public static implicit operator Result<T>(T value) => new Success<T>(value);
 
     public static implicit operator Result<T>(Error error) => new Failure<T>([error]);
