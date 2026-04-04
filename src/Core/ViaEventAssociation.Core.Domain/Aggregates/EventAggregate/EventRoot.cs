@@ -33,6 +33,11 @@ public class EventRoot : AggregateRoot<EventId>
         return new EventRoot(EventId.Create());
     }
 
+    public static EventRoot Create(EventId id)
+    {
+        return new EventRoot(id);
+    }
+
     public void SetEventStatus(EventStatus status)
     {
         eventStatus = status;
