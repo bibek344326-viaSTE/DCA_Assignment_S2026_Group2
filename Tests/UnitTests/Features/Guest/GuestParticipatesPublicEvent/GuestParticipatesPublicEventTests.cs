@@ -3,7 +3,7 @@ using ViaEventAssociation.Core.Domain.Aggregates.EventAggregate;
 using ViaEventAssociation.Core.Domain.Aggregates.GuestAggregate;
 using ViaEventAssociation.Core.Tools.OperationResult;
 
-namespace UnitTests.Features.Guests.Participation;
+namespace UnitTests.Features.Guests;
 
 public class GuestParticipatesPublicEventTests
 {
