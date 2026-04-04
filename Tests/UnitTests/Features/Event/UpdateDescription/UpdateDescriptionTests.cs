@@ -26,7 +26,7 @@ public class UpdateDescriptionTests
         evt.UpdateDescription(description);
         
         // Assert
-        Assert.Equal(description, evt.eventDescription);
+        Assert.Equal(description, evt.EventDescription);
     }
     
     //ID:UC3.S2
@@ -43,7 +43,7 @@ public class UpdateDescriptionTests
         evt.UpdateDescription(description);
         
         // Assert
-        Assert.Equal("", evt.eventDescription);
+        Assert.Equal("", evt.EventDescription);
     }
     
     //ID:UC3.S3
@@ -65,8 +65,8 @@ public class UpdateDescriptionTests
         evt.UpdateDescription(description);
         
         // Assert
-        Assert.Equal(description, evt.eventDescription);
-        Assert.Equal(EventStatus.Draft, evt.eventStatus);
+        Assert.Equal(description, evt.EventDescription);
+        Assert.Equal(EventStatus.Draft, evt.EventStatus);
     }
     
     //ID:UC3.F1 

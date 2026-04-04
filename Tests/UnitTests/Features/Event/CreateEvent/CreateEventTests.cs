@@ -15,8 +15,8 @@ public class CreateEventTests
         evt = EventFactory.Init().Build(); 
         
         // Assert
-        Assert.Equal(EventStatus.Draft, evt.eventStatus);
-        Assert.Equal(5, evt.maxGuests);
+        Assert.Equal(EventStatus.Draft, evt.EventStatus);
+        Assert.Equal(5, evt.MaxGuests);
     }
     
     // ID: UC1.S2
@@ -29,7 +29,7 @@ public class CreateEventTests
         evt = EventFactory.Init().Build();
 
         // Assert
-        Assert.Equal("Working Title", evt.eventTitle);
+        Assert.Equal("Working Title", evt.EventTitle);
     }
     
     // ID:UC1.S3
@@ -43,7 +43,7 @@ public class CreateEventTests
 
         // Assert
 
-        Assert.Equal(string.Empty, evt.eventDescription);
+        Assert.Equal(string.Empty, evt.EventDescription);
     }
 
     //S4
@@ -57,6 +57,6 @@ public class CreateEventTests
         evt = EventFactory.Init().Build();
 
         // Assert
-        Assert.Null(evt.isPublic);
+        Assert.Null(evt.IsPublic);
     }
 }

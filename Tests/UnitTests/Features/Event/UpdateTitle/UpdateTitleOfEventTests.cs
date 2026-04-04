@@ -19,7 +19,7 @@ public class UpdateTitleOfEventTests
         evt.UpdateTitle(title);
         
         // Assert
-        Assert.Equal(title, evt.eventTitle);
+        Assert.Equal(title, evt.EventTitle);
     }
     
     //ID.UC2.S2
@@ -33,8 +33,8 @@ public class UpdateTitleOfEventTests
        evt.UpdateTitle("Graduation Gala");
        
          // Assert
-        Assert.Equal("Graduation Gala", evt.eventTitle);
-        Assert.Equal(EventStatus.Draft, evt.eventStatus);
+        Assert.Equal("Graduation Gala", evt.EventTitle);
+        Assert.Equal(EventStatus.Draft, evt.EventStatus);
 
     }
 

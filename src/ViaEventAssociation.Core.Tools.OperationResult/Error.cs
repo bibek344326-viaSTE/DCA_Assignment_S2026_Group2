@@ -92,4 +92,38 @@ public record Error(string Code, string Message)
 
     public static Error InvalidLastName =>
         new("INVALID_LAST_NAME", "Last name must contain only letters a-z.");
+
+    // NEW ERRORS FOR EVENT PARTICIPATION (ID: 11)
+    public static Error EventNotActive =>
+        new("EVENT_NOT_ACTIVE", "Only active events can be joined.");
+
+    public static Error EventIsFull =>
+        new("EVENT_IS_FULL", "The event has reached maximum capacity. There is no more room.");
+
+    public static Error EventHasStarted =>
+        new("EVENT_HAS_STARTED", "Cannot join an event that has already started. Only future events can be participated.");
+
+    public static Error EventIsPrivate =>
+        new("EVENT_IS_PRIVATE", "Only public events can be participated without invitation.");
+
+    public static Error GuestAlreadyParticipating =>
+        new("GUEST_ALREADY_PARTICIPATING", "You are already registered for this event. A guest cannot take two slots at an event.");
+
+    public static Error EventNotFound =>
+        new("EVENT_NOT_FOUND", "The specified event could not be found.");
+
+    public static Error GuestNotFound =>
+        new("GUEST_NOT_FOUND", "The specified guest could not be found.");
+
+    public static Error EventNotReadyOrActive =>
+        new("EVENT_NOT_READY_OR_ACTIVE", "Guest can only be invited to an event that is Ready or Active.");
+
+    public static Error GuestAlreadyInvited =>
+        new("GUEST_ALREADY_INVITED", "Guest is already invited to this event.");
+
+    public static Error InvitationNotFound =>
+        new("INVITATION_NOT_FOUND", "There is no pending invitation for this guest.");
+
+    public static Error EventCancelled =>
+        new("EVENT_CANCELLED", "Cannot accept invitation for a cancelled event.");
 }

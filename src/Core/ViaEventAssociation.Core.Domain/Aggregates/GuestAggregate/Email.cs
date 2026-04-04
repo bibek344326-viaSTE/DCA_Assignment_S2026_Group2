@@ -34,8 +34,8 @@ public class Email : ValueObject
 
         var localPart = email.Split('@')[0];
 
-        var validLetters = Regex.IsMatch(localPart, @"^[a-zA-Z]{3,4}$");
-        var validDigits = Regex.IsMatch(localPart, @"^[0-9]{6}$");
+        bool validLetters = Regex.IsMatch(localPart, @"^[a-zA-Z]{3,4}$");
+        bool validDigits = Regex.IsMatch(localPart, @"^[0-9]{6}$");
 
         if (!validLetters && !validDigits)
             return Error.InvalidViaEmailIdentifier;
