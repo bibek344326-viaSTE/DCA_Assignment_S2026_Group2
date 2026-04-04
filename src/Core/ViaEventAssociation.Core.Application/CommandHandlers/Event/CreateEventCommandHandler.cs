@@ -6,7 +6,7 @@ using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace ViaEventAssociation.Core.Application.CommandHandlers.Event;
 
-internal class CreateEventCommandHandler(IEventRepository eventRepository, IUnitOfWork unitOfWork)
+public class CreateEventCommandHandler(IEventRepository eventRepository, IUnitOfWork unitOfWork)
     : ICommandHandler<CreateEventCommand>
 {
     public async Task<Result> HandleAsync(CreateEventCommand command)
