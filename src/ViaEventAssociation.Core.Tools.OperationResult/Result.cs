@@ -2,6 +2,9 @@ namespace ViaEventAssociation.Core.Tools.OperationResult;
 
 public abstract record Result
 {
+    public abstract bool IsSuccess { get; }
+    public abstract bool IsFailure { get; }
+
     public static Result<T> Success<T>(T value) => new Success<T>(value);
 
     public static Result<None> Success() => new Success<None>(new None());
@@ -46,9 +49,9 @@ public abstract record Result
 
 public abstract record Result<T> : Result
 {
-    public bool IsSuccess => this is Success<T>;
+    public override bool IsSuccess => this is Success<T>;
 
-    public bool IsFailure => this is Failure<T>;
+    public override bool IsFailure => this is Failure<T>;
 
     public Error Error => this is Failure<T> failure
         ? failure.Errors.First()
