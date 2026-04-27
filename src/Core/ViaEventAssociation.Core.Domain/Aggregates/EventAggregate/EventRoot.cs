@@ -16,6 +16,7 @@ public class EventRoot : AggregateRoot<EventId>
     internal EventStatus EventStatus { get; private set; }
 
     internal LocationId? LocationId { get; private set; }
+    internal int? LocationMaxCapacity { get; private set; }
 
     private readonly HashSet<Email> _participants = [];
     private readonly HashSet<Email> _invitations = [];
@@ -116,6 +117,19 @@ public class EventRoot : AggregateRoot<EventId>
         if (EventStatus is EventStatus.Cancelled) return Error.EventStatusIsCanceled;
 
         LocationId = locationId;
+        LocationMaxCapacity = null;
+        if (EventStatus == EventStatus.Ready) EventStatus = EventStatus.Draft;
+        return Result.Success();
+    }
+
+    public Result<None> SetLocation(LocationId locationId, int locationMaxCapacity)
+    {
+        if (EventStatus is EventStatus.Active) return Error.EventStatusIsActive;
+        if (EventStatus is EventStatus.Cancelled) return Error.EventStatusIsCanceled;
+
+        LocationId = locationId;
+        LocationMaxCapacity = locationMaxCapacity;
+
         if (EventStatus == EventStatus.Ready) EventStatus = EventStatus.Draft;
         return Result.Success();
     }
@@ -147,6 +161,9 @@ public class EventRoot : AggregateRoot<EventId>
     public Result<None> Ready()
     {
         var errors = new HashSet<Error>();
+
+        if (EventStatus is not EventStatus.Draft and not EventStatus.Cancelled)
+            errors.Add(Error.EventMustBeDraftToReady);
 
         if (EventStatus is EventStatus.Cancelled)
             errors.Add(Error.EventStatusIsCanceled);
@@ -229,6 +246,9 @@ public class EventRoot : AggregateRoot<EventId>
 
         if (max > 50)
             errors.Add(Error.TooManyGuests(50));
+
+        if (LocationMaxCapacity.HasValue && max > LocationMaxCapacity.Value)
+            errors.Add(Error.TooManyGuestsForLocation(LocationMaxCapacity.Value));
 
         if (EventStatus is EventStatus.Active && max < MaxGuests)
             errors.Add(Error.EventStatusIsActiveAndMaxGuestsReduced);

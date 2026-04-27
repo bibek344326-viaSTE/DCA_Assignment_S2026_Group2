@@ -133,4 +133,26 @@ public class ReadiesEventTests
         Assert.True(result.IsFailure);
         Assert.Contains(Error.EventTitleIsDefault.Message, result.Error.Message);
     }
+
+    // UC8 additional guard
+    [Fact]
+    public void ReadiesEvent_EventNotDraft_FailureMessageReturned()
+    {
+        // Arrange
+        var @event = EventFactory.Init()
+            .WithValidTitle()
+            .WithValidDescription()
+            .WithValidTimeInFuture()
+            .WithPublicVisibility()
+            .WithMaxNumberOfGuests(10)
+            .WithStatus(EventStatus.Ready)
+            .Build();
+
+        // Act
+        var result = @event.Ready();
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(Error.EventMustBeDraftToReady.Code, result.Error.Code);
+    }
 }

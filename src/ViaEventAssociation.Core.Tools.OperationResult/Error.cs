@@ -48,6 +48,9 @@ public record Error(string Code, string Message)
     public static Error EventTitleIsDefault =>
         new("EVENT_TITLE_DEFAULT", "The event title must be changed from the default title.");
 
+    public static Error EventMustBeDraftToReady =>
+        new("EVENT_NOT_DRAFT", "Only draft events can be made ready.");
+
     public static Error EventDescriptionMissing =>
         new("EVENT_DESCRIPTION_MISSING", "The event description must be set before the event can be made ready.");
 
@@ -75,6 +78,9 @@ public record Error(string Code, string Message)
     public static Error InvalidViaEmailIdentifier =>
         new("INVALID_VIA_EMAIL_IDENTIFIER", "The email identifier must be either 3 or 4 letters, or 6 digits.");
 
+    public static Error EmailAlreadyRegistered =>
+        new("EMAIL_ALREADY_REGISTERED", "The email is already registered.");
+
     public static Error FirstNameTooShort(int minLength) =>
         new("FIRST_NAME_TOO_SHORT", $"First name must be at least {minLength} characters long.");
 
@@ -92,6 +98,9 @@ public record Error(string Code, string Message)
 
     public static Error InvalidLastName =>
         new("INVALID_LAST_NAME", "Last name must contain only letters a-z.");
+
+    public static Error InvalidProfilePictureUrl =>
+        new("INVALID_PROFILE_PICTURE_URL", "The profile picture URL format is invalid.");
 
     // NEW ERRORS FOR EVENT PARTICIPATION (ID: 11)
     public static Error EventNotActive =>

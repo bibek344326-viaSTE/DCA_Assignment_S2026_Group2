@@ -8,21 +8,27 @@ public class Guest : AggregateRoot<Email>
     internal Email email { get; private set; }
     internal string FirstName { get; private set; }
     internal string LastName { get; private set; }
+    internal Uri ProfilePictureUrl { get; private set; }
 
-    private Guest(Email email, string firstName, string lastName) : base(email)
+    private Guest(Email email, string firstName, string lastName, Uri profilePictureUrl) : base(email)
     {
         this.email = email;
         this.FirstName = firstName;
         this.LastName = lastName;
+        this.ProfilePictureUrl = profilePictureUrl;
     }
 
     public static Result<Guest> Create(string? email, string? firstName, string? lastName)
+        => Create(email, firstName, lastName, "https://example.com/default-profile-picture.jpg");
+
+    public static Result<Guest> Create(string? email, string? firstName, string? lastName, string? profilePictureUrl)
     {
         var errors = new List<Error>();
 
         email = email?.Trim();
         firstName = firstName?.Trim();
         lastName = lastName?.Trim();
+        profilePictureUrl = profilePictureUrl?.Trim();
 
         var emailResult = Email.Create(email);
         if (emailResult is Failure<Email> emailFailure)
@@ -36,13 +42,18 @@ public class Guest : AggregateRoot<Email>
         if (lastNameResult is Failure<string> lastNameFailure)
             errors.AddRange(lastNameFailure.Errors);
 
+        var profilePictureUrlResult = ValidateProfilePictureUrl(profilePictureUrl);
+        if (profilePictureUrlResult is Failure<Uri> profilePictureUrlFailure)
+            errors.AddRange(profilePictureUrlFailure.Errors);
+
         if (errors.Any())
             return Result.Failure<Guest>(errors);
 
         return Result.Success(new Guest(
             ((Success<Email>)emailResult).Value,
             ((Success<string>)firstNameResult).Value,
-            ((Success<string>)lastNameResult).Value
+            ((Success<string>)lastNameResult).Value,
+            ((Success<Uri>)profilePictureUrlResult).Value
         ));
     }
 
@@ -69,6 +80,16 @@ public class Guest : AggregateRoot<Email>
 
         var formatted = char.ToUpper(trimmedName[0]) + trimmedName.Substring(1).ToLower();
         return Result.Success(formatted);
+    }
+
+    private static Result<Uri> ValidateProfilePictureUrl(string? profilePictureUrl)
+    {
+        if (string.IsNullOrWhiteSpace(profilePictureUrl))
+            return Error.InvalidProfilePictureUrl;
+
+        return Uri.TryCreate(profilePictureUrl, UriKind.Absolute, out var uri)
+            ? Result.Success(uri)
+            : Error.InvalidProfilePictureUrl;
     }
 
     // Behavior (simple for now)
