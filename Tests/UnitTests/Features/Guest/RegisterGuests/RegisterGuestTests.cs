@@ -115,4 +115,14 @@ public class RegisterGuestTests
         Assert.Contains(errors, e => e.Code == "FIRST_NAME_TOO_SHORT");
         Assert.Contains(errors, e => e.Code == "LAST_NAME_TOO_SHORT");
     }
+
+    [Fact]
+    public void RegisterGuest_InvalidProfilePictureUrl_ShouldFail()
+    {
+        var result = Guest.Create("abc@via.dk", "John", "Doe", "not-a-url");
+
+        Assert.True(result.IsFailure);
+        Assert.Contains(((Failure<Guest>)result).Errors,
+            e => e.Code == Error.InvalidProfilePictureUrl.Code);
+    }
 }

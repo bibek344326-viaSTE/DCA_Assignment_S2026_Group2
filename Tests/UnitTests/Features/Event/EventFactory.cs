@@ -47,6 +47,12 @@ public class EventFactory
         _event.SetLocation(locationId);
         return this;
     }
+
+    public EventFactory WithLocation(LocationId locationId, int locationMaxCapacity)
+    {
+        _event.SetLocation(locationId, locationMaxCapacity);
+        return this;
+    }
     
     public EventFactory WithValidTitle()
     {

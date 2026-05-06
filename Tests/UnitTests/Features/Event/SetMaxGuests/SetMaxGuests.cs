@@ -117,15 +117,15 @@ public class SetMaxGuests
 
         var @event = EventFactory.Init()
             .WithStatus(EventStatus.Draft)
-            .WithLocation(location.Id)
+            .WithLocation(location.Id, 10)
             .Build();
 
         // Act
         var result = @event.SetMaxGuests(25);
 
         // Assert
-        Assert.True(result.IsSuccess);
-        Assert.Equal(25, @event.MaxGuests);
+        Assert.True(result.IsFailure);
+        Assert.Equal(Error.TooManyGuestsForLocation(10).Code, result.Error.Code);
     }
 
     //ID:UC7:F4
