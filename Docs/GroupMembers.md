@@ -7,8 +7,10 @@
 
 ## Team Members
 
-- **Bibek Chaudhary**
-- **Samo Susa**
-- **Sneha Koirala**
+| Name | Student Number |
+| --- | --- |
+| Bibek Chaudhary | 344326 |
+| Samo Susa | 343876 |
+| Sneha Koirala | 345788 |
 
 ---

@@ -31,7 +31,6 @@ public class ReadiesEventTests
     [InlineData(false, true, true, true, 10, "EVENT_TITLE_DEFAULT")]
     [InlineData(true, false, true, true, 10, "EVENT_DESCRIPTION_MISSING")]
     [InlineData(true, true, false, true, 10, "EVENT_DATE_TIME_MISSING")]
-    [InlineData(true, true, true, false, 10, "EVENT_VISIBILITY_MISSING")]
     public void SetReadyEvent_EventIsDraft_MissingOrInvalidData_FailureMessageReturned(
         bool setTitle,
         bool setDescription,
@@ -104,8 +103,8 @@ public class ReadiesEventTests
         var start = DateTime.Now.AddDays(-1).Date.AddHours(10);
         var end = start.AddHours(2);
 
-        var startProp = typeof(EventRoot).GetProperty("eventStartDateTime", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-        var endProp = typeof(EventRoot).GetProperty("eventEndDateTime", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+        var startProp = typeof(EventRoot).GetProperty("EventStartDateTime", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+        var endProp = typeof(EventRoot).GetProperty("EventEndDateTime", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
         startProp?.SetValue(@event, start);
         endProp?.SetValue(@event, end);
 

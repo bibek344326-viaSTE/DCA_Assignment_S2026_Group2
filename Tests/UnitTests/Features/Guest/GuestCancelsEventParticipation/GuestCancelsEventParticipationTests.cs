@@ -9,7 +9,7 @@ public class CancelParticipationTests
     private static Guest CreateGuest(string email = "abc")
         => ((Success<Guest>)Guest.Create($"{email}@via.dk", "John", "Doe")).Value;
 
-    private static EventRoot CreateActiveEvent(DateTime? start = null)
+    private static EventRoot CreateActiveEvent()
     {
         var e = EventRoot.Create();
 
@@ -19,7 +19,7 @@ public class CancelParticipationTests
         var updateDescriptionResult = e.UpdateDescription("Description");
         Assert.True(updateDescriptionResult.IsSuccess);
 
-        var updateDateTimeResult = e.UpdateDateTime(start ?? DateTime.UtcNow.AddDays(1), DateTime.UtcNow.AddDays(1).AddHours(2));
+        var updateDateTimeResult = e.UpdateDateTime(DateTime.UtcNow.AddDays(1), DateTime.UtcNow.AddDays(1).AddHours(2));
         Assert.True(updateDateTimeResult.IsSuccess);
 
         e.MakePublic();
@@ -73,9 +73,11 @@ public class CancelParticipationTests
     {
         // Arrange
         var guest = CreateGuest();
-        var e = CreateActiveEvent(start: DateTime.UtcNow.AddHours(-1)); // already started
+        var e = CreateActiveEvent();
 
         e.AddParticipant(guest.email);
+        var startProperty = typeof(EventRoot).GetProperty("EventStartDateTime", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+        startProperty!.SetValue(e, DateTime.UtcNow.AddHours(-1));
 
         // Act
         var result = e.RemoveParticipant(guest.email);

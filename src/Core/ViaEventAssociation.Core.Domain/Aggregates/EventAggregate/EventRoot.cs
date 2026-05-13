@@ -28,7 +28,7 @@ public class EventRoot : AggregateRoot<EventId>
     {
         EventTitle = "Working Title";
         EventDescription = string.Empty;
-        IsPublic = null;
+        IsPublic = false;
         MaxGuests = 5;
         EventStatus = EventStatus.Draft;
     }
@@ -83,6 +83,8 @@ public class EventRoot : AggregateRoot<EventId>
         if (startTime >= endTime)
         {
             errors.Add(Error.InvalidDateTimeRange);
+            if (startTime == endTime)
+                errors.Add(Error.DurationTooShort);
         }
         else
         {
@@ -101,6 +103,9 @@ public class EventRoot : AggregateRoot<EventId>
             errors.Add(Error.InvalidEndDateTime);
 
         if (startTime.Date == endTime.Date && startHour < 1 && endHour >= 8)
+            errors.Add(Error.InvalidEndDateTime);
+
+        if (endTime.Date > startTime.Date && endHour > 1)
             errors.Add(Error.InvalidEndDateTime);
 
         if (errors.Count != 0) return Result.Failure<None>(errors);
@@ -230,7 +235,9 @@ public class EventRoot : AggregateRoot<EventId>
         if (EventStatus is EventStatus.Cancelled)
             return Error.EventStatusIsCanceled;
 
+        var wasPublic = IsPublic == true;
         IsPublic = false;
+        if (wasPublic && EventStatus == EventStatus.Ready) EventStatus = EventStatus.Draft;
         return Result.Success();
     }
 
@@ -304,6 +311,9 @@ public class EventRoot : AggregateRoot<EventId>
 
         if (!_invitations.Contains(guestEmail))
             return Error.InvitationNotFound;
+
+        if (EventStartDateTime <= DateTime.UtcNow)
+            return Error.EventHasStarted;
 
         if (_participants.Count >= MaxGuests)
             return Error.EventIsFull;

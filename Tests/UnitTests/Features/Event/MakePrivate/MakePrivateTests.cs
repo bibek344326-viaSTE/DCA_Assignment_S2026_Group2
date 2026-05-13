@@ -32,6 +32,7 @@ public class MakePrivateTests
         // Arrange
         var @event = EventFactory.Init()
             .WithStatus(status)
+            .WithPublicVisibility()
             .Build();
         
         // Act
@@ -39,7 +40,7 @@ public class MakePrivateTests
         
         // Assert
         Assert.False(@event.IsPublic);
-        Assert.Equal(status, @event.Status);
+        Assert.Equal(status == EventStatus.Ready ? EventStatus.Draft : status, @event.Status);
     }
         
     // ID:UC6.F1

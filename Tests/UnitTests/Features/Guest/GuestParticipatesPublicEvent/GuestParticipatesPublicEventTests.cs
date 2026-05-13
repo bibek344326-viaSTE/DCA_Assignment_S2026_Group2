@@ -51,15 +51,17 @@ public class GuestParticipatesPublicEventTests
             .WithPublicVisibility()
             .WithStatus(EventStatus.Active)
             .WithValidTimeInFuture()
-            .WithMaxNumberOfGuests(1)
+            .WithMaxNumberOfGuests(10)
             .Build();
 
-        // Fill event
-        var guest2 = ((Success<Guest>)GuestFactory.Init()
-            .WithInvalidEmail("abcd@via.dk")
-            .Build()).Value;
+        for (var i = 0; i < 10; i++)
+        {
+            var participant = ((Success<Guest>)GuestFactory.Init()
+                .WithInvalidEmail($"{i:000000}@via.dk")
+                .Build()).Value;
 
-        @event.AddParticipant(guest2.email);
+            @event.AddParticipant(participant.email);
+        }
 
         var result = @event.AddParticipant(guest.email);
 
