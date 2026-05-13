@@ -2,24 +2,16 @@ using ViaEventAssociation.Core.Tools.OperationResult;
 
 namespace ViaEventAssociation.Core.AppEntry.Dispatcher;
 
-public class CommandDispatcher: IDispatcher 
+public class CommandDispatcher(IServiceProvider serviceProvider) : IDispatcher
 {
-    private readonly IServiceProvider _serviceProvider;
-
-    public CommandDispatcher(IServiceProvider serviceProvider)
-    {
-        _serviceProvider = serviceProvider;
-    }
-    
     public Task<Result> DispatchAsync<TCommand>(TCommand command)
     {
-        Type handlerType = typeof(ICommandHandler<>).MakeGenericType(typeof(TCommand));
-        dynamic handler = _serviceProvider.GetService(handlerType);
-        if (handler == null)
+        var handler = serviceProvider.GetService(typeof(ICommandHandler<TCommand>)) as ICommandHandler<TCommand>;
+        if (handler is null)
         {
             throw new InvalidOperationException($"Handler not found {typeof(TCommand).Name}");
         }
-        
-        return handler.HandleAsync((dynamic)command);
+
+        return handler.HandleAsync(command);
     }
 }
