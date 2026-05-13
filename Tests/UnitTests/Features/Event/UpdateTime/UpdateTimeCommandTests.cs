@@ -8,7 +8,7 @@ namespace UnitTests.Features.Event.UpdateTime;
 public class UpdateTimeCommandTests
 {
     [Theory]
-    [InlineData("2023/08/25 19:00", "2023/08/25 23:59")]
+    [InlineData("2027/08/25 19:00", "2027/08/25 23:59")]
     public void UpdateTime_WithValidStartAndEnd_Success(DateTime start, DateTime end)
     {
         Result<UpdateTimeCommand> result = UpdateTimeCommand.Create(Guid.NewGuid(), start, end);
@@ -21,7 +21,7 @@ public class UpdateTimeCommandTests
     }
 
     [Theory]
-    [InlineData("2023/08/26 19:00", "2023/08/25 01:00")]
+    [InlineData("2027/08/26 19:00", "2027/08/25 01:00")]
     public void UpdateTime_WithStartAfterEnd_Failure(DateTime start, DateTime end)
     {
         Result<UpdateTimeCommand> result = UpdateTimeCommand.Create(Guid.NewGuid(), start, end);

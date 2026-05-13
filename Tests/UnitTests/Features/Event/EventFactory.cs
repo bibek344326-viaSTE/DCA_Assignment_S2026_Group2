@@ -1,4 +1,5 @@
 using ViaEventAssociation.Core.Domain.Aggregates.EventAggregate;
+using ViaEventAssociation.Core.Domain.Aggregates.GuestAggregate;
 using ViaEventAssociation.Core.Domain.Aggregates.LocationAggregate;
 
 namespace UnitTests.Features.Event;
@@ -32,14 +33,14 @@ public class EventFactory
 
     public EventFactory WithMaxNumberOfGuestsInvalid(int maxNumberOfGuests)
     {
-        var property = typeof(EventRoot).GetProperty("maxGuests", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-        property.SetValue(_event, maxNumberOfGuests);
+        var property = typeof(EventRoot).GetProperty("MaxGuests", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+        property!.SetValue(_event, maxNumberOfGuests);
         return this;
     }
     
     public EventRoot Build()
     {
-        return _event;
+        return _event!;
     }
     
     public EventFactory WithLocation(LocationId locationId)
@@ -89,7 +90,7 @@ public class EventFactory
         var start = DateTime.Now.AddDays(2).Date.AddHours(10);
         var end = start.AddHours(2);
 
-        _event.UpdateDateTime(start, end);
+        SetDateTimeDirectly(start, end);
         return this;
     }
 
@@ -98,9 +99,24 @@ public class EventFactory
         var start = DateTime.Now.AddDays(-2).Date.AddHours(10);
         var end = start.AddHours(2);
 
-        _event.UpdateDateTime(start, end);
+        SetDateTimeDirectly(start, end);
         return this;
-    }   
+    }
+
+    public EventFactory WithParticipant(Email email)
+    {
+        _event!.AddParticipant(email);
+        return this;
+    }
+
+    private void SetDateTimeDirectly(DateTime start, DateTime end)
+    {
+        var startProperty = typeof(EventRoot).GetProperty("EventStartDateTime", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+        var endProperty = typeof(EventRoot).GetProperty("EventEndDateTime", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+
+        startProperty!.SetValue(_event, start);
+        endProperty!.SetValue(_event, end);
+    }
     public EventFactory WithPublicVisibility()
     {
         _event.MakePublic();

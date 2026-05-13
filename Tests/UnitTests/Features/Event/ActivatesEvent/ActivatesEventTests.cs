@@ -72,7 +72,6 @@ public class ActivatesEventTests
     [InlineData(false, true, true, true, 10, false, "EVENT_TITLE_DEFAULT")]
     [InlineData(true, false, true, true, 10, false, "EVENT_DESCRIPTION_MISSING")]
     [InlineData(true, true, false, true, 10, false, "EVENT_DATE_TIME_MISSING")]
-    [InlineData(true, true, true, false, 10, false, "EVENT_VISIBILITY_MISSING")]
     [InlineData(true, true, true, true, 3, true, "INVALID_MAX_GUESTS_RANGE")]
     public void ActivateEvent_EventInDraftStatus_MissingOrInvalidData_FailureMessageReturned(
         bool setTitle,

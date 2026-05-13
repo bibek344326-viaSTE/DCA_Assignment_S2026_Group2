@@ -12,6 +12,9 @@ public class InviteGuestTests
     private static EventRoot CreateEvent(EventStatus status)
     {
         var e = EventRoot.Create();
+        var start = DateTime.UtcNow.AddDays(1).Date.AddHours(10);
+        e.UpdateDateTime(start, start.AddHours(2));
+        e.MakePublic();
         e.SetEventStatus(status);
         e.SetMaxGuests(10);
         return e;
@@ -52,12 +55,14 @@ public class InviteGuestTests
     public void InviteGuest_EventFull_ShouldFail()
     {
         var e = CreateEvent(EventStatus.Active);
-        e.SetMaxGuests(1);
 
-        var guest1 = CreateGuest("abc");
+        for (var i = 0; i < 10; i++)
+        {
+            var participant = CreateGuest($"{i:000000}");
+            e.AddParticipant(participant.email);
+        }
+
         var guest2 = CreateGuest("def");
-
-        e.AddParticipant(guest1.email);
 
         var result = e.InviteGuest(guest2.email);
 

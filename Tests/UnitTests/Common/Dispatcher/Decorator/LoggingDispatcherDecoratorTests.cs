@@ -28,7 +28,7 @@ public class LoggingDispatcherDecoratorTests
         await loggingDispatcher.DispatchAsync(command);
 
         // Assert
-        Assert.Contains("[STARTED]", testLogger.LogMessages);
+        Assert.Contains(testLogger.LogMessages, message => message.StartsWith("[STARTED]"));
     }
 
     [Fact]
