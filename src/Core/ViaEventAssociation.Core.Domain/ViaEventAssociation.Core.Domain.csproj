@@ -17,6 +17,11 @@
             <_Parameter1>ViaEventAssociation.Infrastructure.EfcDmPersistence</_Parameter1>
         </AssemblyAttribute>
     </ItemGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.8" />
+      <PackageReference Include="xunit.v3.extensibility.core" Version="3.2.2" />
+    </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\..\ViaEventAssociation.Core.Tools.OperationResult\ViaEventAssociation.Core.Tools.OperationResult.csproj" />
