@@ -11,7 +11,11 @@
   <Folder Name="/src/Core/Tools/">
     <Project Path="src/ViaEventAssociation.Core.Tools.OperationResult/ViaEventAssociation.Core.Tools.OperationResult.csproj" />
   </Folder>
+  <Folder Name="/src/Infrastructure/">
+    <Project Path="src/Infrastructure/ViaEventAssociation.Infrastructure.EfcDmPersistence/ViaEventAssociation.Infrastructure.EfcDmPersistence.csproj" />
+  </Folder>
   <Folder Name="/Tests/">
+    <Project Path="Tests/IntegrationTests/IntegrationTests.csproj" />
     <Project Path="Tests/UnitTests/UnitTests.csproj" />
   </Folder>
 </Solution>
