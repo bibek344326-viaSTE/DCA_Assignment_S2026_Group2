@@ -38,4 +38,4 @@ Result: `213` passed, `0` failed.
 
 ## Remaining Notes
 
-The full test suite has one failing dispatcher logging decorator test. That failure is outside the Assignment 4 domain model scope and belongs to a later assignment.
+The full test suite now passes. Dispatcher coverage is documented under Assignment 6.
