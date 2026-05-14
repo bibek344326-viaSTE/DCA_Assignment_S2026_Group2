@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices.JavaScript;
 using ViaEventAssociation.Core.Domain.Aggregates.EventAggregate;
 using ViaEventAssociation.Core.Tools.OperationResult;
 
@@ -34,7 +33,7 @@ public class UpdateDescriptionTests
     [Theory]
     [InlineData("")]
     [InlineData(null)]
-    public void UpdateDescription_DescriptionIsNullOrEmpty_DescriptionSetToEmptyDescription(string description)
+    public void UpdateDescription_DescriptionIsNullOrEmpty_DescriptionSetToEmptyDescription(string? description)
     {
         // Arrange
         var evt = EventFactory.Init().Build();

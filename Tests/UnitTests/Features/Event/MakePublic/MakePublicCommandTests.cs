@@ -15,7 +15,7 @@ public class MakePublicCommandTests
         MakeEventPublicCommand command = result.Payload!;
 
         Assert.True(result.IsSuccess);
-        Assert.NotEmpty(command.Id.ToString());
+        Assert.False(string.IsNullOrEmpty(command.Id.ToString()));
     }
 
     [Fact]

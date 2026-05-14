@@ -91,10 +91,10 @@ public class UpdateTitleOfEventTests
     public void UpdateTitle_TitleNull_FailureMessageReturned() {
         // Arrange
         var evt = EventFactory.Init().Build();
-        string title = null;
+        string? title = null;
 
         // Act
-        var result = evt.UpdateTitle(title);
+        var result = evt.UpdateTitle(title!);
 
         // Assert
         Assert.True(result.IsFailure);

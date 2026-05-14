@@ -16,8 +16,7 @@ public class UpdateTimeCommandTests
 
         Assert.True(result.IsSuccess);
         Assert.NotNull(command.Id);
-        Assert.NotNull(command.Id.ToString());
-        Assert.NotEmpty(command.Id.ToString());
+        Assert.False(string.IsNullOrEmpty(command.Id.ToString()));
     }
 
     [Theory]

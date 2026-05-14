@@ -19,7 +19,7 @@ public class SetMaxGuestsCommandTests
         SetMaxGuestsCommand command = result.Payload!;
 
         Assert.True(result.IsSuccess);
-        Assert.NotEmpty(command.Id.ToString());
+        Assert.False(string.IsNullOrEmpty(command.Id.ToString()));
         Assert.Equal(maxGuests, command.MaxGuests);
     }
 

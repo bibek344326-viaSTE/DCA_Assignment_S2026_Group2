@@ -10,12 +10,12 @@ public class CreateEventCommandTests
     public void CreateEmptyEvent_WithId_StatusDraftAndMaxGuests5_Success()
     {
         Result<CreateEventCommand> result = CreateEventCommand.Create();
-        CreateEventCommand command = result.Payload;
         
         Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Payload);
+        var command = result.Payload;
         Assert.NotNull(command.Id);
-        Assert.NotNull(command.Id.ToString());
-        Assert.NotEmpty(command.Id.ToString());
+        Assert.False(string.IsNullOrEmpty(command.Id.ToString()));
     }
     
 }
