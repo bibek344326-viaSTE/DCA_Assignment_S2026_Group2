@@ -15,9 +15,8 @@ public static class EndpointResults
         return controller.BadRequest(new ErrorResponse(errors));
     }
 
-    public static ActionResult Exception(ControllerBase controller, Exception exception)
+    public static ActionResult Exception(ControllerBase controller, Exception _)
     {
-        _ = exception;
         return controller.StatusCode(StatusCodes.Status500InternalServerError, new ErrorResponse([
             new ApiError("UNEXPECTED_ERROR", "An unexpected error occurred.")
         ]));

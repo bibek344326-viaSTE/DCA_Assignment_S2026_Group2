@@ -8,8 +8,14 @@ internal static class QueryTestData
 
     public static bool TryGetSeedDirectory(out string seedDirectory)
     {
-        seedDirectory = SeedDirectoryValue!;
-        return SeedDirectoryValue is not null;
+        if (SeedDirectoryValue is not null)
+        {
+            seedDirectory = SeedDirectoryValue;
+            return true;
+        }
+
+        seedDirectory = string.Empty;
+        return false;
     }
 
     private static string? FindSeedDirectory()
