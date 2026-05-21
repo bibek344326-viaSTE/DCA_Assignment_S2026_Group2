@@ -16,9 +16,12 @@ public static class EndpointResults
     }
 
     public static ActionResult Exception(ControllerBase controller, Exception exception)
-        => controller.StatusCode(StatusCodes.Status500InternalServerError, new ErrorResponse([
-            new ApiError("UNEXPECTED_ERROR", exception.Message)
+    {
+        ArgumentNullException.ThrowIfNull(exception);
+        return controller.StatusCode(StatusCodes.Status500InternalServerError, new ErrorResponse([
+            new ApiError("UNEXPECTED_ERROR", "An unexpected error occurred.")
         ]));
+    }
 
     private static IEnumerable<Error> ExtractErrors(Result result)
     {

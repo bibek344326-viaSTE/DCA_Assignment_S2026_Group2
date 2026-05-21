@@ -24,6 +24,9 @@ internal sealed class QueryTestFixture : IAsyncDisposable
 
     public static async Task<QueryTestFixture> CreateSeededAsync(DateTime now)
     {
+        if (!QueryTestData.TryGetSeedDirectory(out var seedDirectory))
+            throw new InvalidOperationException("Could not find Assignments/Assignment8/ViaEventAssociation.");
+
         var connection = new SqliteConnection("Data Source=:memory:");
         await connection.OpenAsync();
 
@@ -36,7 +39,7 @@ internal sealed class QueryTestFixture : IAsyncDisposable
         await using var scope = provider.CreateAsyncScope();
         var context = scope.ServiceProvider.GetRequiredService<QueryDbContext>();
         await context.Database.EnsureCreatedAsync();
-        await context.SeedFromJsonDirectoryAsync(QueryTestData.SeedDirectory);
+        await context.SeedFromJsonDirectoryAsync(seedDirectory);
 
         return new QueryTestFixture(connection, provider);
     }

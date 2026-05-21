@@ -1,10 +1,26 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace IntegrationTests.Queries;
 
 internal static class QueryTestData
 {
-    public static string SeedDirectory => FindSeedDirectory();
+    private static readonly string? SeedDirectoryValue = FindSeedDirectory();
 
-    private static string FindSeedDirectory()
+    public static string? SeedDirectory => SeedDirectoryValue;
+
+    public static bool TryGetSeedDirectory([NotNullWhen(true)] out string? seedDirectory)
+    {
+        if (SeedDirectoryValue is not null)
+        {
+            seedDirectory = SeedDirectoryValue;
+            return true;
+        }
+
+        seedDirectory = null;
+        return false;
+    }
+
+    private static string? FindSeedDirectory()
     {
         var current = new DirectoryInfo(Directory.GetCurrentDirectory());
 
@@ -17,6 +33,6 @@ internal static class QueryTestData
             current = current.Parent;
         }
 
-        throw new DirectoryNotFoundException("Could not find Assignments/Assignment8/ViaEventAssociation.");
+        return null;
     }
 }

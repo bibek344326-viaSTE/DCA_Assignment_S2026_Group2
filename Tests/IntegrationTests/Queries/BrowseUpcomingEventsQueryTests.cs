@@ -7,6 +7,9 @@ public class BrowseUpcomingEventsQueryTests
     [Fact]
     public async Task DispatchAsync_ReturnsPagedUpcomingEventsOrderedByStart()
     {
+        if (!QueryTestData.TryGetSeedDirectory(out _))
+            Assert.Skip("Assignment 8 seed data directory is not available.");
+
         await using var fixture = await QueryTestFixture.CreateSeededAsync(new DateTime(2024, 3, 15, 0, 0, 0));
         var dispatcher = fixture.Dispatcher();
         var answer = await dispatcher.DispatchAsync(new BrowseUpcomingEventsQuery(null, PageNumber: 1, PageSize: 3));

@@ -7,6 +7,9 @@ public class GetSingleEventQueryTests
     [Fact]
     public async Task DispatchAsync_ReturnsEventDetailsAndPagedGuests()
     {
+        if (!QueryTestData.TryGetSeedDirectory(out _))
+            Assert.Skip("Assignment 8 seed data directory is not available.");
+
         await using var fixture = await QueryTestFixture.CreateSeededAsync(new DateTime(2024, 3, 15, 0, 0, 0));
         var eventId = Guid.Parse("40ed2fd9-2240-4791-895f-b9da1a1f64e4");
 
