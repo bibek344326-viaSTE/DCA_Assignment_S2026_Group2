@@ -39,7 +39,13 @@ builder.Services.AddPresentationMappings();
 
 var app = builder.Build();
 
-await InitializeDatabasesAsync(app.Services);
+var shouldInitializeDatabases =
+    app.Environment.IsDevelopment()
+    || app.Environment.IsEnvironment("Testing")
+    || builder.Configuration.GetValue<bool>("InitializeDatabasesOnStartup");
+
+if (shouldInitializeDatabases)
+    await InitializeDatabasesAsync(app.Services);
 
 app.MapControllers();
 

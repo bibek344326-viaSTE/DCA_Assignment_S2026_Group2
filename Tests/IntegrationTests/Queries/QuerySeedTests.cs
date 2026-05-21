@@ -10,6 +10,9 @@ public class QuerySeedTests
     [Fact]
     public async Task SeedFromJsonDirectoryAsync_AddsAssignmentEightData()
     {
+        if (!QueryTestData.TryGetSeedDirectory(out var seedDirectory))
+            Assert.Skip("Assignment 8 seed data directory is not available.");
+
         var cancellationToken = TestContext.Current.CancellationToken;
         await using var connection = new SqliteConnection("Data Source=:memory:");
         await connection.OpenAsync(cancellationToken);
@@ -21,7 +24,7 @@ public class QuerySeedTests
         await using var context = new QueryDbContext(options);
         await context.Database.EnsureCreatedAsync(cancellationToken);
 
-        await context.SeedFromJsonDirectoryAsync(QueryTestData.SeedDirectory);
+        await context.SeedFromJsonDirectoryAsync(seedDirectory);
 
         Assert.Equal(28, await context.Events.CountAsync(cancellationToken));
         Assert.Equal(50, await context.Guests.CountAsync(cancellationToken));

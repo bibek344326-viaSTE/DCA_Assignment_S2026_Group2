@@ -24,7 +24,7 @@ public sealed class BrowseUpcomingEventsEndpoint(
         }
         catch (Exception exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
+            return EndpointResults.Exception(this, exception);
         }
     }
 }

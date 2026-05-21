@@ -60,6 +60,23 @@ public class EventEndpointTests
         Assert.Equal(HttpStatusCode.InternalServerError, response.StatusCode);
         var body = await response.Content.ReadFromJsonAsync<ErrorResponse>(TestContext.Current.CancellationToken);
         Assert.Contains(body!.Errors, error => error.Code == "UNEXPECTED_ERROR");
+        Assert.Contains(body.Errors, error => error.Message == "An unexpected error occurred.");
+    }
+
+    [Fact]
+    public async Task BrowseUpcomingEvents_ReturnsServerErrorContract_WhenQueryDispatcherThrows()
+    {
+        var queryDispatcher = new FakeQueryDispatcher(_ => throw new InvalidOperationException("Dispatcher failed."));
+        await using var factory = new PresentationWebApplicationFactory(queryDispatcher: queryDispatcher);
+        using var client = factory.CreateClient();
+
+        var response = await client.GetAsync("/api/events/upcoming", TestContext.Current.CancellationToken);
+
+        Assert.Equal(HttpStatusCode.InternalServerError, response.StatusCode);
+        var body = await response.Content.ReadFromJsonAsync<ErrorResponse>(TestContext.Current.CancellationToken);
+        Assert.NotNull(body);
+        Assert.Contains(body.Errors, error => error.Code == "UNEXPECTED_ERROR");
+        Assert.Contains(body.Errors, error => error.Message == "An unexpected error occurred.");
     }
 
     [Fact]

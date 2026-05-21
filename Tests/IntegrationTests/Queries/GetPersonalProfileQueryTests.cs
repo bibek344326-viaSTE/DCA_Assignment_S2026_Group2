@@ -7,6 +7,9 @@ public class GetPersonalProfileQueryTests
     [Fact]
     public async Task DispatchAsync_ReturnsGuestProfileWithUpcomingPastAndPendingInvitationCounts()
     {
+        if (!QueryTestData.TryGetSeedDirectory(out _))
+            Assert.Skip("Assignment 8 seed data directory is not available.");
+
         await using var fixture = await QueryTestFixture.CreateSeededAsync(new DateTime(2024, 3, 15, 0, 0, 0));
         var guestId = Guid.Parse("230c1a99-d5c7-4fbc-9f48-07ccbb100936");
 
