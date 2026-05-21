@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace IntegrationTests.Queries;
 
 internal static class QueryTestData
@@ -6,7 +8,7 @@ internal static class QueryTestData
 
     public static string? SeedDirectory => SeedDirectoryValue;
 
-    public static bool TryGetSeedDirectory(out string seedDirectory)
+    public static bool TryGetSeedDirectory([NotNullWhen(true)] out string? seedDirectory)
     {
         if (SeedDirectoryValue is not null)
         {
@@ -14,7 +16,7 @@ internal static class QueryTestData
             return true;
         }
 
-        seedDirectory = string.Empty;
+        seedDirectory = null;
         return false;
     }
 
