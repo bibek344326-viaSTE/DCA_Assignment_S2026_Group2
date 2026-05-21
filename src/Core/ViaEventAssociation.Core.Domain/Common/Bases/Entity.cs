@@ -1,6 +1,7 @@
 namespace ViaEventAssociation.Core.Domain.Common.Bases;
 
 public abstract class Entity<TId>
+    where TId : notnull
 {
     public TId Id { get; }
     
@@ -15,12 +16,12 @@ public abstract class Entity<TId>
             return false;
         
         var other = (Entity<TId>)obj;
-        return Id.Equals(other.Id);
+        return EqualityComparer<TId>.Default.Equals(Id, other.Id);
     }
 
     public override int GetHashCode()
     {
-        return Id.GetHashCode();
+        return EqualityComparer<TId>.Default.GetHashCode(Id);
     }
 }
 

@@ -19,7 +19,8 @@ public class CancelParticipationTests
         var updateDescriptionResult = e.UpdateDescription("Description");
         Assert.True(updateDescriptionResult.IsSuccess);
 
-        var updateDateTimeResult = e.UpdateDateTime(DateTime.UtcNow.AddDays(1), DateTime.UtcNow.AddDays(1).AddHours(2));
+        var eventStart = DateTime.Today.AddDays(1).AddHours(9);
+        var updateDateTimeResult = e.UpdateDateTime(eventStart, eventStart.AddHours(2));
         Assert.True(updateDateTimeResult.IsSuccess);
 
         e.MakePublic();

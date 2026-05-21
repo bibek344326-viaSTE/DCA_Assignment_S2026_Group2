@@ -1,6 +1,6 @@
 namespace ViaEventAssociation.Core.Domain.Contracts;
 
-public class ISystemTime
+public interface ISystemTime
 {
-    
+    DateTime Now { get; }
 }

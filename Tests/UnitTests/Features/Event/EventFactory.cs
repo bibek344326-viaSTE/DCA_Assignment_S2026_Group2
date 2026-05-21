@@ -6,18 +6,15 @@ namespace UnitTests.Features.Event;
 
 public class EventFactory
 {
-    private EventRoot? _event;
+    private readonly EventRoot _event;
     
-    private EventFactory()
+    private EventFactory(EventRoot @event)
     {
+        _event = @event;
     }
     
     public static EventFactory Init()
-    {   
-        var factory = new EventFactory();
-        factory._event = EventRoot.Create();
-        return factory;
-    }
+        => new(EventRoot.Create());
     
     public EventFactory WithStatus(EventStatus status) 
     {
@@ -40,7 +37,7 @@ public class EventFactory
     
     public EventRoot Build()
     {
-        return _event!;
+        return _event;
     }
     
     public EventFactory WithLocation(LocationId locationId)
@@ -105,7 +102,7 @@ public class EventFactory
 
     public EventFactory WithParticipant(Email email)
     {
-        _event!.AddParticipant(email);
+        _event.AddParticipant(email);
         return this;
     }
 

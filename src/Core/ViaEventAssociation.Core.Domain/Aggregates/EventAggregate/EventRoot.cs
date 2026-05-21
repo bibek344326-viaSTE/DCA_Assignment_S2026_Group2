@@ -57,7 +57,7 @@ public class EventRoot : AggregateRoot<EventId>
         return new EventRoot(id);
     }
     
-    public Result<None> UpdateDescription(string description)
+    public Result<None> UpdateDescription(string? description)
 
     {
         if (EventStatus is EventStatus.Active) return Error.EventStatusIsActive;
