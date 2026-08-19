@@ -2,6 +2,7 @@ using ViaEventAssociation.Core.Domain.Aggregates.GuestAggregate;
 using ViaEventAssociation.Core.Domain.Aggregates.LocationAggregate;
 using ViaEventAssociation.Core.Domain.Common.Bases;
 using ViaEventAssociation.Core.Tools.OperationResult;
+using System.Linq;
 
 namespace ViaEventAssociation.Core.Domain.Aggregates.EventAggregate;
 
@@ -19,8 +20,9 @@ public class EventRoot : AggregateRoot<EventId>
     internal int? LocationMaxCapacity { get; private set; }
 
     private readonly HashSet<Email> _participants = [];
-    private readonly HashSet<Email> _invitations = [];
-    private readonly HashSet<Email> _declinedInvitations = [];
+    private readonly List<Invitation> _invitations = [];
+    private readonly List<EventJoiningRequest> _joiningRequests = [];
+    private readonly List<EventAttendance> _attendances = [];
 
     public EventStatus Status => EventStatus;
 
@@ -290,13 +292,17 @@ public class EventRoot : AggregateRoot<EventId>
         if (_participants.Count >= MaxGuests)
             return Error.EventIsFull;
 
-        if (_invitations.Contains(guestEmail))
+        if (_invitations.Any(invitation => invitation.GuestEmail == guestEmail && invitation.InvitationStatus != InvitationStatus.Declined))
             return Error.GuestAlreadyInvited;
 
         if (_participants.Contains(guestEmail))
             return Error.GuestAlreadyParticipating;
 
-        _invitations.Add(guestEmail);
+        var invitationResult = Invitation.Create(guestEmail);
+        if (invitationResult is Failure<Invitation> invitationFailure)
+            return Result.Failure<None>(invitationFailure.Errors);
+
+        _invitations.Add(invitationResult.Payload!);
         return Result.Success();
     }
 
@@ -309,7 +315,8 @@ public class EventRoot : AggregateRoot<EventId>
             return Error.EventNotActive;
         }
 
-        if (!_invitations.Contains(guestEmail))
+        var invitation = _invitations.FirstOrDefault(invitation => invitation.GuestEmail == guestEmail);
+        if (invitation is null || invitation.InvitationStatus == InvitationStatus.Declined)
             return Error.InvitationNotFound;
 
         if (EventStartDateTime <= DateTime.UtcNow)
@@ -318,28 +325,92 @@ public class EventRoot : AggregateRoot<EventId>
         if (_participants.Count >= MaxGuests)
             return Error.EventIsFull;
 
-        _invitations.Remove(guestEmail);
+        var acceptResult = invitation.Accept();
+        if (acceptResult is Failure<None> acceptFailure)
+            return Result.Failure<None>(acceptFailure.Errors);
+
         _participants.Add(guestEmail);
 
         return Result.Success();
     }
 
-    public bool HasPendingInvitation(Email email) => _invitations.Contains(email);
+    public bool HasPendingInvitation(Email email) =>
+        _invitations.Any(invitation => invitation.GuestEmail == email && invitation.InvitationStatus == InvitationStatus.Pending);
 
     public Result<None> DeclineInvitation(Email guestEmail)
     {
         if (EventStatus == EventStatus.Cancelled)
             return Error.EventCancelled;
 
-        if (!_invitations.Contains(guestEmail) && !_participants.Contains(guestEmail))
+        var invitation = _invitations.FirstOrDefault(invitation => invitation.GuestEmail == guestEmail);
+        if (invitation is null && !_participants.Contains(guestEmail))
             return Error.InvitationNotFound;
 
-        _invitations.Remove(guestEmail);
         _participants.Remove(guestEmail);
-        _declinedInvitations.Add(guestEmail);
+
+        if (invitation is not null)
+            invitation.Reject();
 
         return Result.Success();
     }
 
-    public bool IsInvitationDeclined(Email email) => _declinedInvitations.Contains(email);
+    public bool IsInvitationDeclined(Email email) =>
+        _invitations.Any(invitation => invitation.GuestEmail == email && invitation.InvitationStatus == InvitationStatus.Declined);
+
+    public Result<None> RequestToJoin(Email guestEmail, string descriptionOfJoining)
+    {
+        if (EventStatus == EventStatus.Cancelled)
+            return Error.EventCancelled;
+
+        if (EventStatus is not EventStatus.Ready and not EventStatus.Active)
+            return Error.EventNotReadyOrActive;
+
+        if (IsPublic == true)
+            return Error.EventIsPrivate;
+
+        if (_joiningRequests.Any(request => request.GuestEmail == guestEmail && request.ApprovalStatus == ApprovalStatus.Pending))
+            return Error.GuestAlreadyInvited;
+
+        var requestResult = EventJoiningRequest.Create(guestEmail, descriptionOfJoining);
+        if (requestResult is Failure<EventJoiningRequest> requestFailure)
+            return Result.Failure<None>(requestFailure.Errors);
+
+        _joiningRequests.Add(requestResult.Payload!);
+        return Result.Success();
+    }
+
+    public Result<None> ApproveJoinRequest(Email guestEmail)
+    {
+        var request = _joiningRequests.FirstOrDefault(request => request.GuestEmail == guestEmail);
+        if (request is null)
+            return Error.InvitationNotFound;
+
+        var approveResult = request.Approve();
+        if (approveResult is Failure<None> approveFailure)
+            return Result.Failure<None>(approveFailure.Errors);
+
+        return Result.Success();
+    }
+
+    public Result<None> RegisterAttendance(Email guestEmail)
+    {
+        if (_attendances.Any(attendance => attendance.GuestEmail == guestEmail && !attendance.IsCancelled))
+            return Error.GuestAlreadyParticipating;
+
+        var attendanceResult = EventAttendance.Create(guestEmail);
+        if (attendanceResult is Failure<EventAttendance> attendanceFailure)
+            return Result.Failure<None>(attendanceFailure.Errors);
+
+        _attendances.Add(attendanceResult.Payload!);
+        return Result.Success();
+    }
+
+    public Result<None> CancelAttendance(Email guestEmail)
+    {
+        var attendance = _attendances.FirstOrDefault(attendance => attendance.GuestEmail == guestEmail && !attendance.IsCancelled);
+        if (attendance is null)
+            return Result.Success();
+
+        return attendance.Cancel();
+    }
 }

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ViaEventAssociation.Core.Domain.Aggregates.EventAggregate;
 using ViaEventAssociation.Core.Domain.Aggregates.GuestAggregate;
 using ViaEventAssociation.Core.Domain.Aggregates.LocationAggregate;
+using System;
 
 namespace ViaEventAssociation.Infrastructure.EfcDmPersistence.Configurations;
 
@@ -42,8 +43,9 @@ internal class EventRootConfiguration : IEntityTypeConfiguration<EventRoot>
         builder.Property(e => e.LocationMaxCapacity);
 
         ConfigureEmailCollection(builder, "_participants", "EventParticipants");
-        ConfigureEmailCollection(builder, "_invitations", "EventInvitations");
-        ConfigureEmailCollection(builder, "_declinedInvitations", "EventDeclinedInvitations");
+        ConfigureInvitationCollection(builder, "_invitations", "EventInvitations");
+        ConfigureJoinRequestCollection(builder, "_joiningRequests", "EventJoiningRequests");
+        ConfigureAttendanceCollection(builder, "_attendances", "EventAttendances");
     }
 
     private static void ConfigureEmailCollection(
@@ -61,6 +63,96 @@ internal class EventRootConfiguration : IEntityTypeConfiguration<EventRoot>
                 .HasColumnName("Email")
                 .HasMaxLength(254)
                 .IsRequired();
+        });
+
+        builder.Navigation(fieldName).UsePropertyAccessMode(PropertyAccessMode.Field);
+    }
+
+    private static void ConfigureInvitationCollection(
+        EntityTypeBuilder<EventRoot> builder,
+        string fieldName,
+        string tableName)
+    {
+        builder.OwnsMany<Invitation>(fieldName, owned =>
+        {
+            owned.ToTable(tableName);
+            owned.WithOwner().HasForeignKey("EventId");
+            owned.Property<int>("Id").ValueGeneratedOnAdd();
+            owned.HasKey("Id");
+
+            owned.OwnsOne(invitation => invitation.GuestEmail, email =>
+            {
+                email.Property(value => value.Value)
+                    .HasColumnName("Email")
+                    .HasMaxLength(254)
+                    .IsRequired();
+            });
+
+            owned.Property(invitation => invitation.SentDate);
+            owned.Property(invitation => invitation.InvitationStatus)
+                .HasConversion<string>()
+                .HasMaxLength(20)
+                .IsRequired();
+        });
+
+        builder.Navigation(fieldName).UsePropertyAccessMode(PropertyAccessMode.Field);
+    }
+
+    private static void ConfigureJoinRequestCollection(
+        EntityTypeBuilder<EventRoot> builder,
+        string fieldName,
+        string tableName)
+    {
+        builder.OwnsMany<EventJoiningRequest>(fieldName, owned =>
+        {
+            owned.ToTable(tableName);
+            owned.WithOwner().HasForeignKey("EventId");
+            owned.Property<int>("Id").ValueGeneratedOnAdd();
+            owned.HasKey("Id");
+
+            owned.OwnsOne(request => request.GuestEmail, email =>
+            {
+                email.Property(value => value.Value)
+                    .HasColumnName("Email")
+                    .HasMaxLength(254)
+                    .IsRequired();
+            });
+
+            owned.Property(request => request.DescriptionOfJoining)
+                .HasMaxLength(250)
+                .IsRequired();
+            owned.Property(request => request.RequestDate);
+            owned.Property(request => request.ApprovalStatus)
+                .HasConversion<string>()
+                .HasMaxLength(20)
+                .IsRequired();
+        });
+
+        builder.Navigation(fieldName).UsePropertyAccessMode(PropertyAccessMode.Field);
+    }
+
+    private static void ConfigureAttendanceCollection(
+        EntityTypeBuilder<EventRoot> builder,
+        string fieldName,
+        string tableName)
+    {
+        builder.OwnsMany<EventAttendance>(fieldName, owned =>
+        {
+            owned.ToTable(tableName);
+            owned.WithOwner().HasForeignKey("EventId");
+            owned.Property<int>("Id").ValueGeneratedOnAdd();
+            owned.HasKey("Id");
+
+            owned.OwnsOne(attendance => attendance.GuestEmail, email =>
+            {
+                email.Property(value => value.Value)
+                    .HasColumnName("Email")
+                    .HasMaxLength(254)
+                    .IsRequired();
+            });
+
+            owned.Property(attendance => attendance.RegisteredDate);
+            owned.Property(attendance => attendance.IsCancelled);
         });
 
         builder.Navigation(fieldName).UsePropertyAccessMode(PropertyAccessMode.Field);

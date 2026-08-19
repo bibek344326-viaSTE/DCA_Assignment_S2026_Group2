@@ -1,5 +1,6 @@
 using ViaEventAssociation.Core.Domain.Common.Bases;
 using ViaEventAssociation.Core.Tools.OperationResult;
+using ViaEventAssociation.Core.Domain.Aggregates.EventAggregate;
 
 namespace ViaEventAssociation.Core.Domain.Aggregates.GuestAggregate;
 
@@ -93,8 +94,8 @@ public class Guest : AggregateRoot<Email>
     }
 
     // Behavior (simple for now)
-    public Result<None> AttendEvent(Guid eventId) => Result.Success();
-    public Result<None> CancelAttendance(Guid eventId) => Result.Success();
-    public Result<None> RequestToJoinEvent(Guid eventId) => Result.Success();
-    public Result<None> AcceptInvitation(Guid invitationId) => Result.Success();
+    public Result<None> AttendEvent(EventId eventId) => Result.Success();
+    public Result<None> CancelAttendance(EventId eventId) => Result.Success();
+    public Result<None> RequestToJoinEvent(EventId eventId) => Result.Success();
+    public Result<None> AcceptInvitation(InvitationId invitationId) => Result.Success();
 }
